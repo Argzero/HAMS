@@ -18,6 +18,10 @@ class Main
         var manifest = Manifest.fromAssets("bootstrap");
         var loader = System.loadAssetPack(manifest);
         loader.get(onSuccess);
+		
+		// Initializes main game class
+		var gameHandler = new Game();
+		
     }
 
     private static function onSuccess (pack :AssetPack)
@@ -26,10 +30,10 @@ class Main
         var background = new FillSprite(0x202020, System.stage.width, System.stage.height);
         System.root.addChild(new Entity().add(background));
 
-        // Add a plane that moves along the screen
-        var plane = new ImageSprite(pack.getTexture("plane"));
-        plane.x._ = 30;
-        plane.y.animateTo(200, 6);
-        System.root.addChild(new Entity().add(plane));
+        // Add a plane that moves along the screen --- REMOVED BUT LEFT AS COMMENTS FOR REFERENCE
+        // var plane = new ImageSprite(pack.getTexture("plane"));
+        // plane.x._ = 30;
+        // plane.y.animateTo(200, 6);
+        // System.root.addChild(new Entity().add(plane));
     }
 }
