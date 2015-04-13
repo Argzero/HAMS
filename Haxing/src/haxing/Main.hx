@@ -24,13 +24,6 @@ class Main
         // Game BG Color added
         System.root.addChild(new Entity()
             .add(new FillSprite(0x29506d, System.stage.width, System.stage.height)));
-            
-        // Adds Player to the game
-        var player = new Entity()
-            //.add(new MoviePlayer(new Library(pack,"player")).loop("idle"))
-            .add(new Sprite().setXY(System.stage.width, System.stage.height))
-            .add(new Player());
-        System.root.addChild(player);
     }
 
     private static function onSuccess (pack :AssetPack)
@@ -38,6 +31,24 @@ class Main
         // Add a solid color background
         var background = new FillSprite(0x202020, System.stage.width, System.stage.height);
         System.root.addChild(new Entity().add(background));
+        
+        var spritesheet = pack.getTexture("Hero");
+        var subtextures = spritesheet.split(8, 3);
+        
+        // Adds Player to the game
+        var player = new Entity()
+            .add(new ImageSprite(subtextures[0]).setXY(System.stage.width/2, System.stage.height/2))
+            .add(new Player( {
+                walkingBack : subtextures.slice(0, 4),
+                walkingFront : subtextures.slice(4, 8),
+                walkingLeft : subtextures.slice(8, 12),
+                walkingRight : subtextures.slice(12, 16),
+                attackingLeft : subtextures.slice(16, 18),
+                attackingRight : subtextures.slice(18, 20),
+                attackingBack : subtextures.slice(20, 22),
+                attackingFront : subtextures.slice(22, 24)
+            }));
+        System.root.addChild(player);
 
         // Add a plane that moves along the screen --- REMOVED BUT LEFT AS COMMENTS FOR REFERENCE
         // var plane = new ImageSprite(pack.getTexture("plane"));
