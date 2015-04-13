@@ -19,7 +19,7 @@ class Main
         // Load up the compiled pack in the assets directory named "bootstrap"
         var manifest = Manifest.fromAssets("bootstrap");
         var loader = System.loadAssetPack(manifest);
-        loader.get(onSuccess);
+        loader.get(onSuccess); 
         
         // Game BG Color added
         System.root.addChild(new Entity()
@@ -50,6 +50,9 @@ class Main
             }));
         System.root.addChild(player);
 
+        // Adding Background music and looping it -- TEST
+        var bgm = pack.getSound("deep_leaves/deep_leaves");
+        bgm.loop();
         // Add a plane that moves along the screen --- REMOVED BUT LEFT AS COMMENTS FOR REFERENCE
         // var plane = new ImageSprite(pack.getTexture("plane"));
         // plane.x._ = 30;
