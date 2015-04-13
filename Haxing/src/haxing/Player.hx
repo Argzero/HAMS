@@ -1,6 +1,7 @@
 package haxing;
 import flambe.animation.AnimatedFloat;
 import flambe.animation.Behavior;
+import flambe.animation.Ease.EaseFunction;
 import flambe.Component;
 import flambe.display.ImageSprite;
 import flambe.display.Sprite;
@@ -15,7 +16,10 @@ import haxing.Player.SpriteChangeBehavior;
  * @author YawarRaza7349
  */
 
- typedef SpriteStates = {
+/**
+ * Defines the Array of Image Textures to use for animations of the player instance
+ */
+typedef SpriteStates = {
     var walkingBack : Array<SubTexture>;
     var walkingFront : Array<SubTexture>;
     var walkingLeft : Array<SubTexture>;
@@ -26,6 +30,7 @@ import haxing.Player.SpriteChangeBehavior;
     var attackingRight : Array<SubTexture>;
 }
 
+// Behavior to manage Animation of the Player class
 class SpriteChangeBehavior implements Behavior {
     private static inline var TIME_BETWEEN_SPRITE_CHANGE = 0.5;
     private var _spriteChangeTimer: AnimatedFloat;
@@ -46,11 +51,12 @@ class SpriteChangeBehavior implements Behavior {
 
 // Player class: Where player interactions affect the game-mode
 class Player extends Component {
+    // private variables
     private var _spriteChangeTimer: AnimatedFloat;
     private var _currentIndex: Int;
     private var _currentStateArray: Array<SubTexture>;
-    
     private var _spriteStates:SpriteStates;
+    private var SLOW_DOWN_SPEED = 0.95;
     
     // Runs at Instantiation
     public function new(spriteStates : SpriteStates) {
@@ -78,8 +84,8 @@ class Player extends Component {
         
         // Scales the sprite based on distance from the front of the screen (isometric-ish)
         var scale = 0.5 + 0.2 * sprite.y._/System.stage.height;
-        
-        // sprite.y or .x += (amount) to move sprite
-        // sprite.scaleX or .scaleY = (scale * FMath.sign(sprite.scaleX._) for x) or (scale for y) -- prevents flipping the sprite from modifying the sprite's width
+        sprite.y.animateBy(5, 1);
+        // amount to move sprite
+        //sprite.scaleX or .scaleY = (scale * FMath.sign(sprite.scaleX._) for x) or (scale for y) -- prevents flipping the sprite from modifying the sprite's width
     }
 }

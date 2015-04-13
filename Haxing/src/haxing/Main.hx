@@ -1,5 +1,4 @@
 package haxing;
-
 import flambe.display.PatternSprite;
 import flambe.display.Sprite;
 import flambe.Entity;
@@ -11,6 +10,7 @@ import flambe.display.ImageSprite;
 
 class Main
 {
+    // Main function for the game
     private static function main ()
     {
         // Wind up all platform-specific stuff
@@ -26,6 +26,11 @@ class Main
             .add(new FillSprite(0x29506d, System.stage.width, System.stage.height)));
     }
 
+    /* Loads AssetPack into Game and Initializes the AudioManager, 
+     * Player, and Enemy(UNIMPLEMENTED) class data
+     * 
+     * @param pack AssetPack returned when assets have loaded successfully
+     */
     private static function onSuccess (pack :AssetPack)
     {
         // Add a solid color background
@@ -51,9 +56,11 @@ class Main
         System.root.addChild(player);
 
         // Adding Background music and looping it -- TEST
-        var bgm = pack.getSound("deep_leaves/deep_leaves");
-        bgm.loop();
-        // Add a plane that moves along the screen --- REMOVED BUT LEFT AS COMMENTS FOR REFERENCE
+        // var bgm = pack.getSound("deep_leaves/deep_leaves");
+        // bgm.loop();
+        
+        // LEFT FOR DOCUMENTATION PURPOSES AND FOR REFERENCE
+        // Add a plane that moves along the screen
         // var plane = new ImageSprite(pack.getTexture("plane"));
         // plane.x._ = 30;
         // plane.y.animateTo(200, 6);
