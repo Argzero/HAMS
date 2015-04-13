@@ -1,5 +1,7 @@
 package haxing;
 
+import flambe.display.PatternSprite;
+import flambe.display.Sprite;
 import flambe.Entity;
 import flambe.System;
 import flambe.asset.AssetPack;
@@ -18,10 +20,17 @@ class Main
         var manifest = Manifest.fromAssets("bootstrap");
         var loader = System.loadAssetPack(manifest);
         loader.get(onSuccess);
-		
-		// Initializes main game class
-		var gameHandler = new Game();
-		
+        
+        // Game BG Color added
+        System.root.addChild(new Entity()
+            .add(new FillSprite(0x29506d, System.stage.width, System.stage.height)));
+            
+        // Adds Player to the game
+        var player = new Entity()
+            //.add(new MoviePlayer(new Library(pack,"player")).loop("idle"))
+            .add(new Sprite().setXY(System.stage.width, System.stage.height))
+            .add(new Player());
+        System.root.addChild(player);
     }
 
     private static function onSuccess (pack :AssetPack)
