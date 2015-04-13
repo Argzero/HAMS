@@ -1,4 +1,4 @@
-package urgame;
+package haxing;
 
 import flambe.Entity;
 import flambe.System;
