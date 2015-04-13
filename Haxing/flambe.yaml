@@ -1,23 +1,23 @@
 # Basic information about the game.
-name: Your Game
-description: A short one-line description.
+name: Haxing
+description: Quick run-away game built in Haxe/Flambe.
 
 # Information about the game developer.
 developer:
-  name: Your Company Name
-  url: http://yourwebsite.com
+  name: Argzero & YawarRaza7349
+  url: http://argzero.org
 
 # The game's unique identifier.
-id: com.yourdomain.yourgame
+id: org.argzero.haxing
 
 # The game's version string.
 version: 1.0.0
 
 # The main class name.
-main: urgame.Main
+main: haxing.Main
 
 # The platform to use when invoking `run` or `build` with no arguments.
-default_platform: flash
+default_platform: html
 
 # The initial orientation and fullscreen state on mobile devices.
 orientation: portrait
