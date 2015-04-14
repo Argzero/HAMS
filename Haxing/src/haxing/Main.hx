@@ -2,11 +2,14 @@ package haxing;
 import flambe.display.PatternSprite;
 import flambe.display.Sprite;
 import flambe.Entity;
+import flambe.input.KeyboardEvent;
 import flambe.System;
 import flambe.asset.AssetPack;
 import flambe.asset.Manifest;
 import flambe.display.FillSprite;
 import flambe.display.ImageSprite;
+import flambe.System.keyboard;
+import haxe.ds.StringMap;
 
 class Main
 {
@@ -15,7 +18,6 @@ class Main
     {
         // Wind up all platform-specific stuff
         System.init();
-
         // Load up the compiled pack in the assets directory named "bootstrap"
         var manifest = Manifest.fromAssets("bootstrap");
         var loader = System.loadAssetPack(manifest);
@@ -54,11 +56,18 @@ class Main
                 attackingFront : subtextures.slice(22, 24)
             }));
         System.root.addChild(player);
-
-        // Adding Background music and looping it -- TEST
-        // var bgm = pack.getSound("deep_leaves/deep_leaves");
-        // bgm.loop();
         
+        var files = new StringMap<String>();
+        files = new StringMap<String>();
+        files.set("bgm","deep_leaves/deep_leaves");
+        player.get(Player).audio = AudioManager.CreateInstance(pack, files);
+        
+        var audio = new Entity()
+            .add(AudioManager.GetInstance());
+        System.root.addChild(audio);
+        audio.get(AudioManager).Loop("bgm", 0);
+        
+        trace("onsuccess COMPLETE");
         // LEFT FOR DOCUMENTATION PURPOSES AND FOR REFERENCE
         // Add a plane that moves along the screen
         // var plane = new ImageSprite(pack.getTexture("plane"));
