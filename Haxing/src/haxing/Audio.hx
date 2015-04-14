@@ -33,7 +33,7 @@ class Audio
     public function update():Void {
         if (current_playback != null) {
             trace (volume);
-            current_playback.volume.animateTo(Lerp(current_playback.volume,volume, lerp_amt), 0.1);
+            current_playback.volume.animateTo(volume, lerp_amt); //Lerp(current_playback.volume,volume, lerp_amt
             if (current_playback.complete._) {
                 current_playback = null;                
             }
@@ -41,14 +41,14 @@ class Audio
     }
     
     // Plays sound
-    public function Play(_volume:Float):Void {
+    public function Play(_volume:Float = 1):Void {
         if (current_playback != null) { return; }
         volume=_volume;
         current_playback = sound.play();
     }
     
     // Loops sound 
-    public function Loop(_volume:Float):Void {
+    public function Loop(_volume:Float = 1):Void {
         if (current_playback != null) { return; }
         volume=_volume;
         current_playback = sound.loop();

@@ -97,31 +97,69 @@ class Player extends Component {
         
         var moving_right = false;
         var moving_left = false;
-        
+        var key_pressed = false;
         if (System.keyboard.isDown(Key.Up)) {
+            key_pressed = true;
             vY += -1;
         }
         if (System.keyboard.isDown(Key.Down)) {
+            key_pressed = true;
             vY += 1;
         }
         if (System.keyboard.isDown(Key.Left)) {
+            key_pressed = true;
             vX += -1;
             moving_left = true;
         }
         if (System.keyboard.isDown(Key.Right)) {
+            key_pressed = true;
             vX += 1;
             moving_right = true;
         }
         sprite.x.animateBy(vX, 0.05);
         sprite.y.animateBy(vY, 0.05);
         
+        
+        // Sets animation states based on velocity
+        if (key_pressed) {
+            setAnimationSprites();
+        }
+        
+        // LOCKS THE POSITION INSIDE THE GAME WORLD
+        if (sprite.x._ + sprite.getNaturalWidth() > System.stage.width - 3) {  
+            sprite.x.animateTo(System.stage.width - 5 - sprite.getNaturalWidth(),0.01);
+        
+            vX = 0;
+        }
+        else if (sprite.x._< 3) {  
+            sprite.x.animateTo(5, 0.01);
+            
+            vX = 0;
+        }        
+        else if (sprite.y._ + sprite.getNaturalHeight() > System.stage.height - 3) {  
+            sprite.y.animateTo(System.stage.height - 5 - sprite.getNaturalHeight(),0.01);
+         
+            vY = 0;
+        }
+        else if (sprite.y._ < 3) {  
+            sprite.y.animateTo(5, 0.01);
+            
+            vY = 0;
+        }
+        
+        // amount to move sprite
+        sprite.scaleY.animateTo(2*scale * FMath.sign(sprite.scaleX._),0.1);
+    }
+    
+    /**
+     * Sets Animation sprites: picks a section of the spritesheet to use as current animation
+     */
+    private function setAnimationSprites():Void {
         if (Math.abs(vX) > 1 && Math.abs(vX) > Math.abs(vY)) {
             if (vX > 0) { _currentStateArray = _spriteStates.walkingRight; }
             else { _currentStateArray = _spriteStates.walkingLeft; }           
         }
         else if(vY > 0){_currentStateArray = _spriteStates.walkingFront;}
         else if(vY < 0){_currentStateArray = _spriteStates.walkingBack;}
-        // amount to move sprite
-        // sprite.scaleY = (scale * FMath.sign(sprite.scaleX._) for x) or (scale for y) -- prevents flipping the sprite from modifying the sprite's width
     }
 }

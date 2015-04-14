@@ -65,7 +65,7 @@ class Main
         var audio = new Entity()
             .add(AudioManager.GetInstance());
         System.root.addChild(audio);
-        audio.get(AudioManager).Loop("bgm", 0);
+        audio.get(AudioManager).Loop("bgm", 0.7);
         
         trace("onsuccess COMPLETE");
         // LEFT FOR DOCUMENTATION PURPOSES AND FOR REFERENCE

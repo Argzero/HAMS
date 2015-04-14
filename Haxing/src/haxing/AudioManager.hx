@@ -90,12 +90,12 @@ class AudioManager extends Component
     }
     
     // Calls Audio object's Play based on string identifier as noted in the file StringMap
-    public function Play(_label:String, _volume:Float):Void {
+    public function Play(_label:String, _volume:Float = 1):Void {
         audio_by_label.get(_label).Play(_volume);
     }
     
     // Calls Audio object's Loop based on string identifier as noted in the file StringMap
-    public function Loop(_label:String, _volume:Float):Void {
+    public function Loop(_label:String, _volume:Float = 1):Void {
          audio_by_label.get(_label).Loop(_volume);
     }
 }
