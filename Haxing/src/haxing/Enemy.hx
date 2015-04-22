@@ -9,8 +9,7 @@ import haxing.SpriteChangeBehavior.SpriteStates;
 /**
  * Basic Enemy - Random Walk is current goal
  * @author Argzero
- */
-
+**/
 class Enemy
 {
      // private variables

@@ -1,6 +1,9 @@
 package haxing;
+import flambe.debug.FpsDisplay;
+import flambe.display.Font;
 import flambe.display.PatternSprite;
 import flambe.display.Sprite;
+import flambe.display.TextSprite;
 import flambe.Entity;
 import flambe.input.KeyboardEvent;
 import flambe.System;
@@ -18,8 +21,11 @@ class Main
     {
         // Wind up all platform-specific stuff
         System.init();
+        var background = new FillSprite(0x202020, System.stage.width, System.stage.height);
+        System.root.addChild(new Entity()
+            .add(background));
         // Load up the compiled pack in the assets directory named "bootstrap"
-        var manifest = Manifest.fromAssets("bootstrap");
+        var manifest = Manifest.fromAssets("global");
         var loader = System.loadAssetPack(manifest);
         loader.get(onSuccess); 
         
@@ -37,7 +43,11 @@ class Main
     {
         // Add a solid color background
         var background = new FillSprite(0x202020, System.stage.width, System.stage.height);
-        System.root.addChild(new Entity().add(background));
+        System.root.addChild(new Entity()
+            .add(background));
+        System.root.addChild(new Entity()
+            .add(new TextSprite(new Font(pack, "REMOVE"), "HI I EXIST!"))
+            .add(new FpsDisplay()));
         
         var spritesheet = pack.getTexture("Hero");
         var subtextures = spritesheet.split(8, 3);

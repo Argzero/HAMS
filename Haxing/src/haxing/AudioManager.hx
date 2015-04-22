@@ -13,15 +13,23 @@ import haxe.ds.StringMap;
 class AudioManager extends Component
 {
     // Singleton-like object: current Instance of the AudioManager if it exists
-    private static var Instance:AudioManager;    
+    private static var Instance:AudioManager;   
+    
+    // Collection of the Audio Files
     private var files_by_label:StringMap<String>;
+    
+    // Collection of Audio indexed by the label given to them on creation
     private var audio_by_label:StringMap<Audio>;
+    
+    // Flambe Assets
     private var assets:AssetPack;
+    
+    public static var debug:Bool = true;
     
     // Gets the current singleton instance of the AudioManager object
     public static function GetInstance():AudioManager {
         if (AudioManager.Instance == null) {
-            throw "Instance not initialized with Asset Pack. Unable to load content. Please initialize in the OnSuccess Method";
+            throw "Instance not initialized with Asset Pack. Unable to load content. Please initialize in the Main#OnSuccess Method";
         }
         else return AudioManager.Instance;
     }
@@ -69,7 +77,9 @@ class AudioManager extends Component
         load_files(pack);
         //pack.getSound("deep_leaves/deep_leaves");
         
-        trace("audiomanager created");
+        if(AudioManager.debug){
+            trace("AudioManager instantiated!");
+        }
     }
     
     // Runs each time update is called -- dt is not used
@@ -82,9 +92,12 @@ class AudioManager extends Component
     // Loads files in the files_by_label collection into the audio_by_label collection
     public function load_files(_pack:AssetPack):Void {
         for (name in files_by_label.keys()) {
+            if (AudioManager.debug) {
+                trace(name + " has been added to the AudioManager");
+            }
             var _path = files_by_label.get(name);
             var sound = _pack.getSound(_path);
-            audio_by_label.set(name, new Audio(sound, false, 0)); // DEFAULT VALUES UNTIL CUSTOMIZATION IS ADDED
+            audio_by_label.set(name, new Audio(name, sound, false, 0)); // DEFAULT VALUES UNTIL CUSTOMIZATION IS ADDED
         }
         files_by_label = new StringMap<String>();
     }
