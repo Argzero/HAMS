@@ -21,9 +21,9 @@ class AudioManager extends Component
     // Collection of Audio indexed by the label given to them on creation
     private var audio_by_label:StringMap<Audio>;
     
-    // Flambe Assets
-    private var assets:AssetPack;
+    public var SongsManagers:StringMap<SongManager>;
     
+    // Whether the AudioManger should be running in debug or not
     public static var debug:Bool = true;
     
     // Gets the current singleton instance of the AudioManager object
@@ -32,6 +32,16 @@ class AudioManager extends Component
             throw "Instance not initialized with Asset Pack. Unable to load content. Please initialize in the Main#OnSuccess Method";
         }
         else return AudioManager.Instance;
+    }
+    
+    //********************************
+    public function GetFiles():StringMap<String> {
+        return files_by_label;
+    }
+    
+    //********************************
+    public function GetAudio():StringMap<String> {
+        return audio_by_label;
     }
     
     /**
@@ -58,8 +68,25 @@ class AudioManager extends Component
             throw "Assets not given to AudioManager; Unable to load audio assets.";
         }
         else {
-            throw "No expect files passed to AudioManager. Unable to Initialize. If you want to initialize without having initial files, please pass in an empty array";
+            throw "No expected files passed to AudioManager.\nUnable to Initialize.\nIf you want to initialize without having initial files,\nplease pass in an empty array";
         }
+    }
+    
+    //********************************
+    public function CreateSongManager(name:String):SongManager {
+        var song_manager = new SongManager(this);
+        SongsManagers.
+        return song_manager;
+    }
+    
+    //********************************
+    public function DeleteSongManagerAtIndex(name:String):Void {
+        
+    }
+    
+    //********************************
+    public function DeleteSongManager(_sm:SongManager):Void {
+        
     }
     
     /**
@@ -86,6 +113,9 @@ class AudioManager extends Component
     override public function onUpdate(dt:Float) {
         for(name in audio_by_label.keys()) {
             audio_by_label.get(name).update();
+        }
+        for(name in SongsManagers.keys()) {
+            SongsManagers.get(name).update();
         }
     }
     
