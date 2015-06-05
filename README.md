@@ -1,4 +1,17 @@
-#Haxing
+# HAMS 
+HAXE AUDIO MANAGEMENT SYSTEM
+
+<DOCUMENTATION IN PROGRESS/>
+
+
+
+
+
+
+#OLD PROJECT THIS WAS BASED ON
+
+[  Haxing  ]
+
 Currently, the project has an AudioManager in progress which is Singleton-like 
 and a player that moves down and has a Animation Manager.
 
