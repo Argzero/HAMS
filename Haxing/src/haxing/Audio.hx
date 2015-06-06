@@ -9,11 +9,10 @@ import flambe.sound.Sound;
  */
 class Audio {
     private var name:String;
+	public var type:String;
     private var sound:Sound;
     private var volume = 0.0;
-    // Queue of Volumes MISSING //
-    // List of Timed Volumes MISSING //
-    
+
     // Current Returned playback from a play or loop call
     private var current_playback:Playback;
     // Speed at which to fade to the correct volume
@@ -29,6 +28,7 @@ class Audio {
     public function new(_name:String, _sound:Sound, ?_play:Bool = false, ?_loop:Bool = false, _volume:Float = 0) {
         sound = _sound;
         name = _name;
+		type = "SOUND";
         if(AudioManager.debug){trace(_name + " audio created");}
         if (_play) {
             current_playback = sound.play();
@@ -59,6 +59,11 @@ class Audio {
         }
     }
     
+	public function Stop() {
+		current_playback.paused = true; // set to pause
+		current_playback.dispose(); // stop sound and remove
+	}
+	
     // Plays sound
     public function Play(_volume:Float = 1):Void {
         if (current_playback != null) { return; }
@@ -72,6 +77,11 @@ class Audio {
         volume=_volume;
         current_playback = sound.loop();
     }
+	
+	public function SetVolume(_volume:Float) {
+		volume = _volume;
+        current_playback.volume = _volume;
+	}
     
     // Moves float slightly closer to target value based on a specific amount of change
     public function Lerp(from:AnimatedFloat, to:Float, _amt:Float):Float { // FOR ANIMATED FLOAT
@@ -117,10 +127,5 @@ class Audio {
             }
         }
         return value_to_go_to;
-    }
-    
-    public function QueueAnimatedLerp() {
-        // MISSING //
-        
     }
 }

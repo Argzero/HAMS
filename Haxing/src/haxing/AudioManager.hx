@@ -21,7 +21,7 @@ class AudioManager extends Component
     // Collection of Audio indexed by the label given to them on creation
     private var audio_by_label:StringMap<Audio>;
     
-    public var SongsManagers:StringMap<SongManager>;
+    public var SongManagers:StringMap<SongManager>;
     
     // Whether the AudioManger should be running in debug or not
     public static var debug:Bool = true;
@@ -75,7 +75,7 @@ class AudioManager extends Component
     //********************************
     public function CreateSongManager(name:String):SongManager {
         var song_manager = new SongManager(this);
-        SongsManagers.
+        SongManagers.set(name, song_manager);
         return song_manager;
     }
     
@@ -114,8 +114,8 @@ class AudioManager extends Component
         for(name in audio_by_label.keys()) {
             audio_by_label.get(name).update();
         }
-        for(name in SongsManagers.keys()) {
-            SongsManagers.get(name).update();
+        for(name in SongManagers.keys()) {
+            SongManagers.get(name).update();
         }
     }
     
@@ -139,6 +139,10 @@ class AudioManager extends Component
     
     // Calls Audio object's Loop based on string identifier as noted in the file StringMap
     public function Loop(_label:String, _volume:Float = 1):Void {
-         audio_by_label.get(_label).Loop(_volume);
+        audio_by_label.get(_label).Loop(_volume);
     }
+	
+	public function SetVolume(_label:String, _volume:Float) {
+		audio_by_label.get(_label).SetVolume(_volume);
+	}
 }
