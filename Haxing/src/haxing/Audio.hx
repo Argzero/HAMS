@@ -7,22 +7,23 @@ import flambe.sound.Sound;
  * Manages Individual Sounds - Mostly placeholder comments; to be fixed.
  * @author Argzero
  */
-class Audio {
-    private var name:String;
-	public var type:String;
-    private var sound:Sound;
-    private var volume = 0.0;
+class Audio{
+    private var name              :String;
+	public var type               :String;
+    private var sound             :Sound;
+    private var volume            :Float = 0.0;
+    private var muted             :Bool = false;
 
     // Current Returned playback from a play or loop call
-    private var current_playback:Playback;
+    private var current_playback  :Playback;
     // Speed at which to fade to the correct volume
-    public var lerp_amt = 0.1;
+    public var lerp_amt           :Float = 0.1;
     // Bool telling if the Sound was recently Looping or not
-    public var looping = false;
+    public var looping            :Bool = false;
     // Bool telling if the Sound was recently Playing or not
-    public var playing = false;
+    public var playing            :Bool = false;
     // previous position of sound's last playback (useful for loop-callbacks)
-    public var last_position = -1.0;
+    public var last_position      :Float = -1.0;
     
     // Constructor
     public function new(_name:String, _sound:Sound, ?_play:Bool = false, ?_loop:Bool = false, _volume:Float = 0) {
@@ -80,8 +81,12 @@ class Audio {
 	
 	public function SetVolume(_volume:Float) {
 		volume = _volume;
-        current_playback.volume = _volume;
 	}
+
+    public function SetVolumeNow(_volume:Float) {
+        volume = _volume;
+        current_playback.volume.animateTo(_volume,0);
+    }
     
     // Moves float slightly closer to target value based on a specific amount of change
     public function Lerp(from:AnimatedFloat, to:Float, _amt:Float):Float { // FOR ANIMATED FLOAT

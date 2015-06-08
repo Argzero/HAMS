@@ -15,6 +15,9 @@ class AudioManager extends Component
     // Singleton-like object: current Instance of the AudioManager if it exists
     private static var Instance:AudioManager;   
     
+    // AssetPack passed from main
+    public var assets:AssetPack;
+
     // Collection of the Audio Files
     private var files_by_label:StringMap<String>;
     
@@ -22,7 +25,7 @@ class AudioManager extends Component
     private var audio_by_label:StringMap<Audio>;
     
     public var SongManagers:StringMap<SongManager>;
-    
+
     // Whether the AudioManger should be running in debug or not
     public static var debug:Bool = true;
     
@@ -40,7 +43,7 @@ class AudioManager extends Component
     }
     
     //********************************
-    public function GetAudio():StringMap<String> {
+    public function GetAudio():StringMap<Audio> {
         return audio_by_label;
     }
     

@@ -45,10 +45,12 @@ class Main
         var background = new FillSprite(0x202020, System.stage.width, System.stage.height);
         System.root.addChild(new Entity()
             .add(background));
-        System.root.addChild(new Entity()
-            .add(new TextSprite(new Font(pack, "REMOVE"), "HI I EXIST!"))
-            .add(new FpsDisplay()));
         
+        var remFont = new Font(pack, "Arial");        
+        var fps = new Entity().add(new TextSprite(remFont, "0"));
+        fps.add(new FpsDisplay());
+        System.root.addChild(fps);  
+
         var spritesheet = pack.getTexture("Hero");
         var subtextures = spritesheet.split(8, 3);
         
