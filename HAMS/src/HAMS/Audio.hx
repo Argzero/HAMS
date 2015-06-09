@@ -45,6 +45,7 @@ class Audio{
             if(AudioManager.debug){trace (volume);}
             current_playback.volume.animateTo(volume, lerp_amt); // lerp(current_playback.volume,volume, lerp_amt
             if (current_playback.complete._) {
+                current_playback.dispose();
                 current_playback = null;                
             }
             if (current_playback.position<last_position && looping) { // looped just now, now do thing
