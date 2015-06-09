@@ -74,10 +74,10 @@ class Main
         files.set("bgm","deep_leaves/deep_leaves");
         player.get(Player).audio = AudioManager.CreateInstance(pack, files);
         
-        var audio = new Entity()
+        var audio_manager = new Entity()
             .add(AudioManager.GetInstance());
-        System.root.addChild(audio);
-        audio.get(AudioManager).Loop("bgm", 0.7);
+        System.root.addChild(audio_manager);
+        audio_manager.get(AudioManager).Loop("bgm", 0.7);
         
         trace("onsuccess COMPLETE");
         // LEFT FOR DOCUMENTATION PURPOSES AND FOR REFERENCE
