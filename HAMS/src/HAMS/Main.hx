@@ -1,5 +1,5 @@
-package haxing;
-import flambe.debug.FpsDisplay;
+package hams;
+//import flambe.debug.FpsDisplay;
 import flambe.display.Font;
 import flambe.display.PatternSprite;
 import flambe.display.Sprite;
@@ -47,9 +47,9 @@ class Main
             .add(background));
         
         var remFont = new Font(pack, "Arial");        
-        var fps = new Entity().add(new TextSprite(remFont, "0"));
+        /*var fps = new Entity().add(new TextSprite(remFont, "0"));
         fps.add(new FpsDisplay());
-        System.root.addChild(fps);  
+        System.root.addChild(fps);*/ 
 
         var spritesheet = pack.getTexture("Hero");
         var subtextures = spritesheet.split(8, 3);

@@ -1,4 +1,4 @@
-package haxing;
+package hams;
 import flambe.asset.AssetPack;
 import flambe.Component;
 import flambe.sound.Sound;

@@ -1,4 +1,5 @@
 (function () { "use strict";
+var $estr = function() { return js_Boot.__string_rec(this,''); };
 function $extend(from, fields) {
 	function Inherit() {} Inherit.prototype = from; var proto = new Inherit();
 	for (var name in fields) proto[name] = fields[name];
@@ -105,9 +106,6 @@ Std.instance = function(value,c) {
 };
 Std.string = function(s) {
 	return js_Boot.__string_rec(s,"");
-};
-Std["int"] = function(x) {
-	return x | 0;
 };
 Std.parseInt = function(x) {
 	var v = parseInt(x,10);
@@ -715,7 +713,7 @@ flambe_SpeedAdjuster.__name__ = true;
 flambe_SpeedAdjuster.__super__ = flambe_Component;
 flambe_SpeedAdjuster.prototype = $extend(flambe_Component.prototype,{
 	get_name: function() {
-		return "SpeedAdjuster_3";
+		return "SpeedAdjuster_2";
 	}
 	,onUpdate: function(dt) {
 		if(this._realDt > 0) {
@@ -763,32 +761,46 @@ flambe_asset_Asset.prototype = {
 };
 var flambe_asset_AssetFormat = { __ename__ : true, __constructs__ : ["WEBP","JXR","PNG","JPG","GIF","DDS","PVR","PKM","MP3","M4A","OPUS","OGG","WAV","Data"] };
 flambe_asset_AssetFormat.WEBP = ["WEBP",0];
+flambe_asset_AssetFormat.WEBP.toString = $estr;
 flambe_asset_AssetFormat.WEBP.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.JXR = ["JXR",1];
+flambe_asset_AssetFormat.JXR.toString = $estr;
 flambe_asset_AssetFormat.JXR.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.PNG = ["PNG",2];
+flambe_asset_AssetFormat.PNG.toString = $estr;
 flambe_asset_AssetFormat.PNG.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.JPG = ["JPG",3];
+flambe_asset_AssetFormat.JPG.toString = $estr;
 flambe_asset_AssetFormat.JPG.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.GIF = ["GIF",4];
+flambe_asset_AssetFormat.GIF.toString = $estr;
 flambe_asset_AssetFormat.GIF.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.DDS = ["DDS",5];
+flambe_asset_AssetFormat.DDS.toString = $estr;
 flambe_asset_AssetFormat.DDS.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.PVR = ["PVR",6];
+flambe_asset_AssetFormat.PVR.toString = $estr;
 flambe_asset_AssetFormat.PVR.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.PKM = ["PKM",7];
+flambe_asset_AssetFormat.PKM.toString = $estr;
 flambe_asset_AssetFormat.PKM.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.MP3 = ["MP3",8];
+flambe_asset_AssetFormat.MP3.toString = $estr;
 flambe_asset_AssetFormat.MP3.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.M4A = ["M4A",9];
+flambe_asset_AssetFormat.M4A.toString = $estr;
 flambe_asset_AssetFormat.M4A.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.OPUS = ["OPUS",10];
+flambe_asset_AssetFormat.OPUS.toString = $estr;
 flambe_asset_AssetFormat.OPUS.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.OGG = ["OGG",11];
+flambe_asset_AssetFormat.OGG.toString = $estr;
 flambe_asset_AssetFormat.OGG.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.WAV = ["WAV",12];
+flambe_asset_AssetFormat.WAV.toString = $estr;
 flambe_asset_AssetFormat.WAV.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.Data = ["Data",13];
+flambe_asset_AssetFormat.Data.toString = $estr;
 flambe_asset_AssetFormat.Data.__enum__ = flambe_asset_AssetFormat;
 var flambe_asset_AssetEntry = function(name,url,format,bytes) {
 	this.name = name;
@@ -902,44 +914,24 @@ flambe_asset_Manifest.prototype = {
 	}
 	,__class__: flambe_asset_Manifest
 };
-var flambe_debug_FpsDisplay = function() {
-	flambe_Component.call(this);
-	this.reset();
-};
-flambe_debug_FpsDisplay.__name__ = true;
-flambe_debug_FpsDisplay.__super__ = flambe_Component;
-flambe_debug_FpsDisplay.prototype = $extend(flambe_Component.prototype,{
-	get_name: function() {
-		return "FpsDisplay_2";
-	}
-	,onUpdate: function(dt) {
-		++this._fpsFrames;
-		this._fpsTime += dt;
-		if(this._fpsTime > 1) {
-			var fps = this._fpsFrames / this._fpsTime;
-			var text = "FPS: " + (fps * 100 | 0) / 100;
-			var sprite = Std.instance(this.owner._compMap.Sprite_0,flambe_display_TextSprite);
-			if(sprite != null) sprite.set_text(text); else null;
-			this.reset();
-		}
-	}
-	,reset: function() {
-		this._fpsTime = this._fpsFrames = 0;
-	}
-	,__class__: flambe_debug_FpsDisplay
-});
 var flambe_display_BlendMode = { __ename__ : true, __constructs__ : ["Normal","Add","Multiply","Screen","Mask","Copy"] };
 flambe_display_BlendMode.Normal = ["Normal",0];
+flambe_display_BlendMode.Normal.toString = $estr;
 flambe_display_BlendMode.Normal.__enum__ = flambe_display_BlendMode;
 flambe_display_BlendMode.Add = ["Add",1];
+flambe_display_BlendMode.Add.toString = $estr;
 flambe_display_BlendMode.Add.__enum__ = flambe_display_BlendMode;
 flambe_display_BlendMode.Multiply = ["Multiply",2];
+flambe_display_BlendMode.Multiply.toString = $estr;
 flambe_display_BlendMode.Multiply.__enum__ = flambe_display_BlendMode;
 flambe_display_BlendMode.Screen = ["Screen",3];
+flambe_display_BlendMode.Screen.toString = $estr;
 flambe_display_BlendMode.Screen.__enum__ = flambe_display_BlendMode;
 flambe_display_BlendMode.Mask = ["Mask",4];
+flambe_display_BlendMode.Mask.toString = $estr;
 flambe_display_BlendMode.Mask.__enum__ = flambe_display_BlendMode;
 flambe_display_BlendMode.Copy = ["Copy",5];
+flambe_display_BlendMode.Copy.toString = $estr;
 flambe_display_BlendMode.Copy.__enum__ = flambe_display_BlendMode;
 var flambe_math_Point = function(x,y) {
 	if(y == null) y = 0;
@@ -1179,13 +1171,7 @@ var flambe_display_Glyph = function(charCode) {
 };
 flambe_display_Glyph.__name__ = true;
 flambe_display_Glyph.prototype = {
-	draw: function(g,destX,destY) {
-		if(this.width > 0) g.drawSubTexture(this.page,destX + this.xOffset,destY + this.yOffset,this.x,this.y,this.width,this.height);
-	}
-	,getKerning: function(nextCharCode) {
-		if(this._kernings != null) return Std["int"](this._kernings.get(nextCharCode)); else return 0;
-	}
-	,setKerning: function(nextCharCode,amount) {
+	setKerning: function(nextCharCode,amount) {
 		if(this._kernings == null) this._kernings = new haxe_ds_IntMap();
 		this._kernings.set(nextCharCode,amount);
 	}
@@ -1199,14 +1185,7 @@ var flambe_display_Font = function(pack,name) {
 };
 flambe_display_Font.__name__ = true;
 flambe_display_Font.prototype = {
-	layoutText: function(text,align,wrapWidth,letterSpacing,lineSpacing) {
-		if(lineSpacing == null) lineSpacing = 0;
-		if(letterSpacing == null) letterSpacing = 0;
-		if(wrapWidth == null) wrapWidth = 0;
-		if(align == null) align = flambe_display_TextAlign.Left;
-		return new flambe_display_TextLayout(this,text,align,wrapWidth,letterSpacing,lineSpacing);
-	}
-	,reload: function() {
+	reload: function() {
 		this._glyphs = new haxe_ds_IntMap();
 		this._glyphs.set(flambe_display_Font.NEWLINE.charCode,flambe_display_Font.NEWLINE);
 		var parser = new flambe_display__$Font_ConfigParser(this._file.toString());
@@ -1328,121 +1307,6 @@ flambe_display_Font.prototype = {
 	}
 	,__class__: flambe_display_Font
 };
-var flambe_display_TextAlign = { __ename__ : true, __constructs__ : ["Left","Center","Right"] };
-flambe_display_TextAlign.Left = ["Left",0];
-flambe_display_TextAlign.Left.__enum__ = flambe_display_TextAlign;
-flambe_display_TextAlign.Center = ["Center",1];
-flambe_display_TextAlign.Center.__enum__ = flambe_display_TextAlign;
-flambe_display_TextAlign.Right = ["Right",2];
-flambe_display_TextAlign.Right.__enum__ = flambe_display_TextAlign;
-var flambe_display_TextLayout = function(font,text,align,wrapWidth,letterSpacing,lineSpacing) {
-	this.lines = 0;
-	var _g = this;
-	this._font = font;
-	this._glyphs = [];
-	this._offsets = [];
-	this._lineOffset = Math.round(font.lineHeight + lineSpacing);
-	this.bounds = new flambe_math_Rectangle();
-	var lineWidths = [];
-	var ll = text.length;
-	var _g1 = 0;
-	while(_g1 < ll) {
-		var ii = _g1++;
-		var charCode = text.charCodeAt(ii);
-		var glyph = font._glyphs.get(charCode);
-		if(glyph != null) this._glyphs.push(glyph); else null;
-	}
-	var lastSpaceIdx = -1;
-	var lineWidth = 0.0;
-	var lineHeight = 0.0;
-	var newline = font._glyphs.get(10);
-	var addLine = function() {
-		_g.bounds.width = flambe_math_FMath.max(_g.bounds.width,lineWidth);
-		_g.bounds.height += lineHeight;
-		lineWidths[_g.lines] = lineWidth;
-		lineWidth = 0;
-		lineHeight = 0;
-		++_g.lines;
-	};
-	var ii1 = 0;
-	while(ii1 < this._glyphs.length) {
-		var glyph1 = this._glyphs[ii1];
-		this._offsets[ii1] = Math.round(lineWidth);
-		var wordWrap = wrapWidth > 0 && lineWidth + glyph1.width > wrapWidth;
-		if(wordWrap || glyph1 == newline) {
-			if(wordWrap) {
-				if(lastSpaceIdx >= 0) {
-					this._glyphs[lastSpaceIdx] = newline;
-					lineWidth = this._offsets[lastSpaceIdx];
-					ii1 = lastSpaceIdx;
-				} else this._glyphs.splice(ii1,0,newline);
-			}
-			lastSpaceIdx = -1;
-			lineHeight = this._lineOffset;
-			addLine();
-		} else {
-			if(glyph1.charCode == 32) lastSpaceIdx = ii1;
-			lineWidth += glyph1.xAdvance + letterSpacing;
-			lineHeight = flambe_math_FMath.max(lineHeight,glyph1.height + glyph1.yOffset);
-			if(ii1 + 1 < this._glyphs.length) {
-				var nextGlyph = this._glyphs[ii1 + 1];
-				lineWidth += glyph1.getKerning(nextGlyph.charCode);
-			}
-		}
-		++ii1;
-	}
-	addLine();
-	var lineY = 0.0;
-	var alignOffset = flambe_display_TextLayout.getAlignOffset(align,lineWidths[0],wrapWidth);
-	var top = 1.79769313486231e+308;
-	var bottom = -1.79769313486231e+308;
-	var line = 0;
-	var ii2 = 0;
-	var ll1 = this._glyphs.length;
-	while(ii2 < ll1) {
-		var glyph2 = this._glyphs[ii2];
-		if(glyph2.charCode == 10) {
-			lineY += this._lineOffset;
-			++line;
-			alignOffset = flambe_display_TextLayout.getAlignOffset(align,lineWidths[line],wrapWidth);
-		}
-		this._offsets[ii2] += alignOffset;
-		var glyphY = lineY + glyph2.yOffset;
-		if(top < glyphY) top = top; else top = glyphY;
-		bottom = flambe_math_FMath.max(bottom,glyphY + glyph2.height);
-		++ii2;
-	}
-	this.bounds.x = flambe_display_TextLayout.getAlignOffset(align,this.bounds.width,wrapWidth);
-	this.bounds.y = top;
-	this.bounds.height = bottom - top;
-};
-flambe_display_TextLayout.__name__ = true;
-flambe_display_TextLayout.getAlignOffset = function(align,lineWidth,totalWidth) {
-	switch(align[1]) {
-	case 0:
-		return 0;
-	case 2:
-		return totalWidth - lineWidth;
-	case 1:
-		return Math.round((totalWidth - lineWidth) / 2);
-	}
-};
-flambe_display_TextLayout.prototype = {
-	draw: function(g) {
-		var y = 0.0;
-		var ii = 0;
-		var ll = this._glyphs.length;
-		while(ii < ll) {
-			var glyph = this._glyphs[ii];
-			if(glyph.charCode == 10) y += this._lineOffset; else {
-				var x = this._offsets[ii];
-				glyph.draw(g,x,y);
-			}
-			++ii;
-		}
-	}
-	,__class__: flambe_display_TextLayout
-};
 var flambe_display__$Font_ConfigParser = function(config) {
 	this._configText = config;
 	this._keywordPattern = new EReg("([A-Za-z]+)(.*)","");
@@ -1517,8 +1381,10 @@ flambe_display_ImageSprite.prototype = $extend(flambe_display_Sprite.prototype,{
 });
 var flambe_display_Orientation = { __ename__ : true, __constructs__ : ["Portrait","Landscape"] };
 flambe_display_Orientation.Portrait = ["Portrait",0];
+flambe_display_Orientation.Portrait.toString = $estr;
 flambe_display_Orientation.Portrait.__enum__ = flambe_display_Orientation;
 flambe_display_Orientation.Landscape = ["Landscape",1];
+flambe_display_Orientation.Landscape.toString = $estr;
 flambe_display_Orientation.Landscape.__enum__ = flambe_display_Orientation;
 var flambe_display_Texture = function() { };
 flambe_display_Texture.__name__ = true;
@@ -1529,266 +1395,308 @@ flambe_display_Texture.prototype = {
 var flambe_display_SubTexture = function() { };
 flambe_display_SubTexture.__name__ = true;
 flambe_display_SubTexture.__interfaces__ = [flambe_display_Texture];
-var flambe_display_TextSprite = function(font,text) {
-	if(text == null) text = "";
-	this._layout = null;
-	var _g = this;
-	flambe_display_Sprite.call(this);
-	this._font = font;
-	this._text = text;
-	this._align = flambe_display_TextAlign.Left;
-	this._flags = this._flags | 128;
-	var dirtyText = function(_,_1) {
-		_g._flags = _g._flags | 128;
-	};
-	this.wrapWidth = new flambe_animation_AnimatedFloat(0,dirtyText);
-	this.letterSpacing = new flambe_animation_AnimatedFloat(0,dirtyText);
-	this.lineSpacing = new flambe_animation_AnimatedFloat(0,dirtyText);
-};
-flambe_display_TextSprite.__name__ = true;
-flambe_display_TextSprite.__super__ = flambe_display_Sprite;
-flambe_display_TextSprite.prototype = $extend(flambe_display_Sprite.prototype,{
-	draw: function(g) {
-		this.updateLayout();
-		this._layout.draw(g);
-	}
-	,getNaturalWidth: function() {
-		this.updateLayout();
-		if(this.wrapWidth._value > 0) return this.wrapWidth._value; else return this._layout.bounds.width;
-	}
-	,getNaturalHeight: function() {
-		this.updateLayout();
-		var paddedHeight = this._layout.lines * (this._font.lineHeight + this.lineSpacing._value);
-		var boundsHeight = this._layout.bounds.height;
-		if(paddedHeight > boundsHeight) return paddedHeight; else return boundsHeight;
-	}
-	,containsLocal: function(localX,localY) {
-		this.updateLayout();
-		return this._layout.bounds.contains(localX,localY);
-	}
-	,set_text: function(text) {
-		if(text != this._text) {
-			this._text = text;
-			this._flags = this._flags | 128;
-		}
-		return text;
-	}
-	,updateLayout: function() {
-		if((this._flags & 128) != 0) {
-			this._flags = this._flags & -129;
-			this._layout = this._font.layoutText(this._text,this._align,this.wrapWidth._value,this.letterSpacing._value,this.lineSpacing._value);
-		}
-	}
-	,onUpdate: function(dt) {
-		flambe_display_Sprite.prototype.onUpdate.call(this,dt);
-		this.wrapWidth.update(dt);
-		this.letterSpacing.update(dt);
-		this.lineSpacing.update(dt);
-	}
-	,__class__: flambe_display_TextSprite
-});
 var flambe_input_Key = { __ename__ : true, __constructs__ : ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","Number0","Number1","Number2","Number3","Number4","Number5","Number6","Number7","Number8","Number9","Numpad0","Numpad1","Numpad2","Numpad3","Numpad4","Numpad5","Numpad6","Numpad7","Numpad8","Numpad9","NumpadAdd","NumpadDecimal","NumpadDivide","NumpadEnter","NumpadMultiply","NumpadSubtract","F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12","F13","F14","F15","Left","Up","Right","Down","Alt","Backquote","Backslash","Backspace","CapsLock","Comma","Command","Control","Delete","End","Enter","Equals","Escape","Home","Insert","LeftBracket","Minus","PageDown","PageUp","Period","Quote","RightBracket","Semicolon","Shift","Slash","Space","Tab","Menu","Search","Unknown"] };
 flambe_input_Key.A = ["A",0];
+flambe_input_Key.A.toString = $estr;
 flambe_input_Key.A.__enum__ = flambe_input_Key;
 flambe_input_Key.B = ["B",1];
+flambe_input_Key.B.toString = $estr;
 flambe_input_Key.B.__enum__ = flambe_input_Key;
 flambe_input_Key.C = ["C",2];
+flambe_input_Key.C.toString = $estr;
 flambe_input_Key.C.__enum__ = flambe_input_Key;
 flambe_input_Key.D = ["D",3];
+flambe_input_Key.D.toString = $estr;
 flambe_input_Key.D.__enum__ = flambe_input_Key;
 flambe_input_Key.E = ["E",4];
+flambe_input_Key.E.toString = $estr;
 flambe_input_Key.E.__enum__ = flambe_input_Key;
 flambe_input_Key.F = ["F",5];
+flambe_input_Key.F.toString = $estr;
 flambe_input_Key.F.__enum__ = flambe_input_Key;
 flambe_input_Key.G = ["G",6];
+flambe_input_Key.G.toString = $estr;
 flambe_input_Key.G.__enum__ = flambe_input_Key;
 flambe_input_Key.H = ["H",7];
+flambe_input_Key.H.toString = $estr;
 flambe_input_Key.H.__enum__ = flambe_input_Key;
 flambe_input_Key.I = ["I",8];
+flambe_input_Key.I.toString = $estr;
 flambe_input_Key.I.__enum__ = flambe_input_Key;
 flambe_input_Key.J = ["J",9];
+flambe_input_Key.J.toString = $estr;
 flambe_input_Key.J.__enum__ = flambe_input_Key;
 flambe_input_Key.K = ["K",10];
+flambe_input_Key.K.toString = $estr;
 flambe_input_Key.K.__enum__ = flambe_input_Key;
 flambe_input_Key.L = ["L",11];
+flambe_input_Key.L.toString = $estr;
 flambe_input_Key.L.__enum__ = flambe_input_Key;
 flambe_input_Key.M = ["M",12];
+flambe_input_Key.M.toString = $estr;
 flambe_input_Key.M.__enum__ = flambe_input_Key;
 flambe_input_Key.N = ["N",13];
+flambe_input_Key.N.toString = $estr;
 flambe_input_Key.N.__enum__ = flambe_input_Key;
 flambe_input_Key.O = ["O",14];
+flambe_input_Key.O.toString = $estr;
 flambe_input_Key.O.__enum__ = flambe_input_Key;
 flambe_input_Key.P = ["P",15];
+flambe_input_Key.P.toString = $estr;
 flambe_input_Key.P.__enum__ = flambe_input_Key;
 flambe_input_Key.Q = ["Q",16];
+flambe_input_Key.Q.toString = $estr;
 flambe_input_Key.Q.__enum__ = flambe_input_Key;
 flambe_input_Key.R = ["R",17];
+flambe_input_Key.R.toString = $estr;
 flambe_input_Key.R.__enum__ = flambe_input_Key;
 flambe_input_Key.S = ["S",18];
+flambe_input_Key.S.toString = $estr;
 flambe_input_Key.S.__enum__ = flambe_input_Key;
 flambe_input_Key.T = ["T",19];
+flambe_input_Key.T.toString = $estr;
 flambe_input_Key.T.__enum__ = flambe_input_Key;
 flambe_input_Key.U = ["U",20];
+flambe_input_Key.U.toString = $estr;
 flambe_input_Key.U.__enum__ = flambe_input_Key;
 flambe_input_Key.V = ["V",21];
+flambe_input_Key.V.toString = $estr;
 flambe_input_Key.V.__enum__ = flambe_input_Key;
 flambe_input_Key.W = ["W",22];
+flambe_input_Key.W.toString = $estr;
 flambe_input_Key.W.__enum__ = flambe_input_Key;
 flambe_input_Key.X = ["X",23];
+flambe_input_Key.X.toString = $estr;
 flambe_input_Key.X.__enum__ = flambe_input_Key;
 flambe_input_Key.Y = ["Y",24];
+flambe_input_Key.Y.toString = $estr;
 flambe_input_Key.Y.__enum__ = flambe_input_Key;
 flambe_input_Key.Z = ["Z",25];
+flambe_input_Key.Z.toString = $estr;
 flambe_input_Key.Z.__enum__ = flambe_input_Key;
 flambe_input_Key.Number0 = ["Number0",26];
+flambe_input_Key.Number0.toString = $estr;
 flambe_input_Key.Number0.__enum__ = flambe_input_Key;
 flambe_input_Key.Number1 = ["Number1",27];
+flambe_input_Key.Number1.toString = $estr;
 flambe_input_Key.Number1.__enum__ = flambe_input_Key;
 flambe_input_Key.Number2 = ["Number2",28];
+flambe_input_Key.Number2.toString = $estr;
 flambe_input_Key.Number2.__enum__ = flambe_input_Key;
 flambe_input_Key.Number3 = ["Number3",29];
+flambe_input_Key.Number3.toString = $estr;
 flambe_input_Key.Number3.__enum__ = flambe_input_Key;
 flambe_input_Key.Number4 = ["Number4",30];
+flambe_input_Key.Number4.toString = $estr;
 flambe_input_Key.Number4.__enum__ = flambe_input_Key;
 flambe_input_Key.Number5 = ["Number5",31];
+flambe_input_Key.Number5.toString = $estr;
 flambe_input_Key.Number5.__enum__ = flambe_input_Key;
 flambe_input_Key.Number6 = ["Number6",32];
+flambe_input_Key.Number6.toString = $estr;
 flambe_input_Key.Number6.__enum__ = flambe_input_Key;
 flambe_input_Key.Number7 = ["Number7",33];
+flambe_input_Key.Number7.toString = $estr;
 flambe_input_Key.Number7.__enum__ = flambe_input_Key;
 flambe_input_Key.Number8 = ["Number8",34];
+flambe_input_Key.Number8.toString = $estr;
 flambe_input_Key.Number8.__enum__ = flambe_input_Key;
 flambe_input_Key.Number9 = ["Number9",35];
+flambe_input_Key.Number9.toString = $estr;
 flambe_input_Key.Number9.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad0 = ["Numpad0",36];
+flambe_input_Key.Numpad0.toString = $estr;
 flambe_input_Key.Numpad0.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad1 = ["Numpad1",37];
+flambe_input_Key.Numpad1.toString = $estr;
 flambe_input_Key.Numpad1.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad2 = ["Numpad2",38];
+flambe_input_Key.Numpad2.toString = $estr;
 flambe_input_Key.Numpad2.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad3 = ["Numpad3",39];
+flambe_input_Key.Numpad3.toString = $estr;
 flambe_input_Key.Numpad3.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad4 = ["Numpad4",40];
+flambe_input_Key.Numpad4.toString = $estr;
 flambe_input_Key.Numpad4.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad5 = ["Numpad5",41];
+flambe_input_Key.Numpad5.toString = $estr;
 flambe_input_Key.Numpad5.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad6 = ["Numpad6",42];
+flambe_input_Key.Numpad6.toString = $estr;
 flambe_input_Key.Numpad6.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad7 = ["Numpad7",43];
+flambe_input_Key.Numpad7.toString = $estr;
 flambe_input_Key.Numpad7.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad8 = ["Numpad8",44];
+flambe_input_Key.Numpad8.toString = $estr;
 flambe_input_Key.Numpad8.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad9 = ["Numpad9",45];
+flambe_input_Key.Numpad9.toString = $estr;
 flambe_input_Key.Numpad9.__enum__ = flambe_input_Key;
 flambe_input_Key.NumpadAdd = ["NumpadAdd",46];
+flambe_input_Key.NumpadAdd.toString = $estr;
 flambe_input_Key.NumpadAdd.__enum__ = flambe_input_Key;
 flambe_input_Key.NumpadDecimal = ["NumpadDecimal",47];
+flambe_input_Key.NumpadDecimal.toString = $estr;
 flambe_input_Key.NumpadDecimal.__enum__ = flambe_input_Key;
 flambe_input_Key.NumpadDivide = ["NumpadDivide",48];
+flambe_input_Key.NumpadDivide.toString = $estr;
 flambe_input_Key.NumpadDivide.__enum__ = flambe_input_Key;
 flambe_input_Key.NumpadEnter = ["NumpadEnter",49];
+flambe_input_Key.NumpadEnter.toString = $estr;
 flambe_input_Key.NumpadEnter.__enum__ = flambe_input_Key;
 flambe_input_Key.NumpadMultiply = ["NumpadMultiply",50];
+flambe_input_Key.NumpadMultiply.toString = $estr;
 flambe_input_Key.NumpadMultiply.__enum__ = flambe_input_Key;
 flambe_input_Key.NumpadSubtract = ["NumpadSubtract",51];
+flambe_input_Key.NumpadSubtract.toString = $estr;
 flambe_input_Key.NumpadSubtract.__enum__ = flambe_input_Key;
 flambe_input_Key.F1 = ["F1",52];
+flambe_input_Key.F1.toString = $estr;
 flambe_input_Key.F1.__enum__ = flambe_input_Key;
 flambe_input_Key.F2 = ["F2",53];
+flambe_input_Key.F2.toString = $estr;
 flambe_input_Key.F2.__enum__ = flambe_input_Key;
 flambe_input_Key.F3 = ["F3",54];
+flambe_input_Key.F3.toString = $estr;
 flambe_input_Key.F3.__enum__ = flambe_input_Key;
 flambe_input_Key.F4 = ["F4",55];
+flambe_input_Key.F4.toString = $estr;
 flambe_input_Key.F4.__enum__ = flambe_input_Key;
 flambe_input_Key.F5 = ["F5",56];
+flambe_input_Key.F5.toString = $estr;
 flambe_input_Key.F5.__enum__ = flambe_input_Key;
 flambe_input_Key.F6 = ["F6",57];
+flambe_input_Key.F6.toString = $estr;
 flambe_input_Key.F6.__enum__ = flambe_input_Key;
 flambe_input_Key.F7 = ["F7",58];
+flambe_input_Key.F7.toString = $estr;
 flambe_input_Key.F7.__enum__ = flambe_input_Key;
 flambe_input_Key.F8 = ["F8",59];
+flambe_input_Key.F8.toString = $estr;
 flambe_input_Key.F8.__enum__ = flambe_input_Key;
 flambe_input_Key.F9 = ["F9",60];
+flambe_input_Key.F9.toString = $estr;
 flambe_input_Key.F9.__enum__ = flambe_input_Key;
 flambe_input_Key.F10 = ["F10",61];
+flambe_input_Key.F10.toString = $estr;
 flambe_input_Key.F10.__enum__ = flambe_input_Key;
 flambe_input_Key.F11 = ["F11",62];
+flambe_input_Key.F11.toString = $estr;
 flambe_input_Key.F11.__enum__ = flambe_input_Key;
 flambe_input_Key.F12 = ["F12",63];
+flambe_input_Key.F12.toString = $estr;
 flambe_input_Key.F12.__enum__ = flambe_input_Key;
 flambe_input_Key.F13 = ["F13",64];
+flambe_input_Key.F13.toString = $estr;
 flambe_input_Key.F13.__enum__ = flambe_input_Key;
 flambe_input_Key.F14 = ["F14",65];
+flambe_input_Key.F14.toString = $estr;
 flambe_input_Key.F14.__enum__ = flambe_input_Key;
 flambe_input_Key.F15 = ["F15",66];
+flambe_input_Key.F15.toString = $estr;
 flambe_input_Key.F15.__enum__ = flambe_input_Key;
 flambe_input_Key.Left = ["Left",67];
+flambe_input_Key.Left.toString = $estr;
 flambe_input_Key.Left.__enum__ = flambe_input_Key;
 flambe_input_Key.Up = ["Up",68];
+flambe_input_Key.Up.toString = $estr;
 flambe_input_Key.Up.__enum__ = flambe_input_Key;
 flambe_input_Key.Right = ["Right",69];
+flambe_input_Key.Right.toString = $estr;
 flambe_input_Key.Right.__enum__ = flambe_input_Key;
 flambe_input_Key.Down = ["Down",70];
+flambe_input_Key.Down.toString = $estr;
 flambe_input_Key.Down.__enum__ = flambe_input_Key;
 flambe_input_Key.Alt = ["Alt",71];
+flambe_input_Key.Alt.toString = $estr;
 flambe_input_Key.Alt.__enum__ = flambe_input_Key;
 flambe_input_Key.Backquote = ["Backquote",72];
+flambe_input_Key.Backquote.toString = $estr;
 flambe_input_Key.Backquote.__enum__ = flambe_input_Key;
 flambe_input_Key.Backslash = ["Backslash",73];
+flambe_input_Key.Backslash.toString = $estr;
 flambe_input_Key.Backslash.__enum__ = flambe_input_Key;
 flambe_input_Key.Backspace = ["Backspace",74];
+flambe_input_Key.Backspace.toString = $estr;
 flambe_input_Key.Backspace.__enum__ = flambe_input_Key;
 flambe_input_Key.CapsLock = ["CapsLock",75];
+flambe_input_Key.CapsLock.toString = $estr;
 flambe_input_Key.CapsLock.__enum__ = flambe_input_Key;
 flambe_input_Key.Comma = ["Comma",76];
+flambe_input_Key.Comma.toString = $estr;
 flambe_input_Key.Comma.__enum__ = flambe_input_Key;
 flambe_input_Key.Command = ["Command",77];
+flambe_input_Key.Command.toString = $estr;
 flambe_input_Key.Command.__enum__ = flambe_input_Key;
 flambe_input_Key.Control = ["Control",78];
+flambe_input_Key.Control.toString = $estr;
 flambe_input_Key.Control.__enum__ = flambe_input_Key;
 flambe_input_Key.Delete = ["Delete",79];
+flambe_input_Key.Delete.toString = $estr;
 flambe_input_Key.Delete.__enum__ = flambe_input_Key;
 flambe_input_Key.End = ["End",80];
+flambe_input_Key.End.toString = $estr;
 flambe_input_Key.End.__enum__ = flambe_input_Key;
 flambe_input_Key.Enter = ["Enter",81];
+flambe_input_Key.Enter.toString = $estr;
 flambe_input_Key.Enter.__enum__ = flambe_input_Key;
 flambe_input_Key.Equals = ["Equals",82];
+flambe_input_Key.Equals.toString = $estr;
 flambe_input_Key.Equals.__enum__ = flambe_input_Key;
 flambe_input_Key.Escape = ["Escape",83];
+flambe_input_Key.Escape.toString = $estr;
 flambe_input_Key.Escape.__enum__ = flambe_input_Key;
 flambe_input_Key.Home = ["Home",84];
+flambe_input_Key.Home.toString = $estr;
 flambe_input_Key.Home.__enum__ = flambe_input_Key;
 flambe_input_Key.Insert = ["Insert",85];
+flambe_input_Key.Insert.toString = $estr;
 flambe_input_Key.Insert.__enum__ = flambe_input_Key;
 flambe_input_Key.LeftBracket = ["LeftBracket",86];
+flambe_input_Key.LeftBracket.toString = $estr;
 flambe_input_Key.LeftBracket.__enum__ = flambe_input_Key;
 flambe_input_Key.Minus = ["Minus",87];
+flambe_input_Key.Minus.toString = $estr;
 flambe_input_Key.Minus.__enum__ = flambe_input_Key;
 flambe_input_Key.PageDown = ["PageDown",88];
+flambe_input_Key.PageDown.toString = $estr;
 flambe_input_Key.PageDown.__enum__ = flambe_input_Key;
 flambe_input_Key.PageUp = ["PageUp",89];
+flambe_input_Key.PageUp.toString = $estr;
 flambe_input_Key.PageUp.__enum__ = flambe_input_Key;
 flambe_input_Key.Period = ["Period",90];
+flambe_input_Key.Period.toString = $estr;
 flambe_input_Key.Period.__enum__ = flambe_input_Key;
 flambe_input_Key.Quote = ["Quote",91];
+flambe_input_Key.Quote.toString = $estr;
 flambe_input_Key.Quote.__enum__ = flambe_input_Key;
 flambe_input_Key.RightBracket = ["RightBracket",92];
+flambe_input_Key.RightBracket.toString = $estr;
 flambe_input_Key.RightBracket.__enum__ = flambe_input_Key;
 flambe_input_Key.Semicolon = ["Semicolon",93];
+flambe_input_Key.Semicolon.toString = $estr;
 flambe_input_Key.Semicolon.__enum__ = flambe_input_Key;
 flambe_input_Key.Shift = ["Shift",94];
+flambe_input_Key.Shift.toString = $estr;
 flambe_input_Key.Shift.__enum__ = flambe_input_Key;
 flambe_input_Key.Slash = ["Slash",95];
+flambe_input_Key.Slash.toString = $estr;
 flambe_input_Key.Slash.__enum__ = flambe_input_Key;
 flambe_input_Key.Space = ["Space",96];
+flambe_input_Key.Space.toString = $estr;
 flambe_input_Key.Space.__enum__ = flambe_input_Key;
 flambe_input_Key.Tab = ["Tab",97];
+flambe_input_Key.Tab.toString = $estr;
 flambe_input_Key.Tab.__enum__ = flambe_input_Key;
 flambe_input_Key.Menu = ["Menu",98];
+flambe_input_Key.Menu.toString = $estr;
 flambe_input_Key.Menu.__enum__ = flambe_input_Key;
 flambe_input_Key.Search = ["Search",99];
+flambe_input_Key.Search.toString = $estr;
 flambe_input_Key.Search.__enum__ = flambe_input_Key;
-flambe_input_Key.Unknown = function(keyCode) { var $x = ["Unknown",100,keyCode]; $x.__enum__ = flambe_input_Key; return $x; };
+flambe_input_Key.Unknown = function(keyCode) { var $x = ["Unknown",100,keyCode]; $x.__enum__ = flambe_input_Key; $x.toString = $estr; return $x; };
 var flambe_input_KeyboardEvent = function() {
 	this.init(0,null);
 };
@@ -1802,18 +1710,24 @@ flambe_input_KeyboardEvent.prototype = {
 };
 var flambe_input_MouseButton = { __ename__ : true, __constructs__ : ["Left","Middle","Right","Unknown"] };
 flambe_input_MouseButton.Left = ["Left",0];
+flambe_input_MouseButton.Left.toString = $estr;
 flambe_input_MouseButton.Left.__enum__ = flambe_input_MouseButton;
 flambe_input_MouseButton.Middle = ["Middle",1];
+flambe_input_MouseButton.Middle.toString = $estr;
 flambe_input_MouseButton.Middle.__enum__ = flambe_input_MouseButton;
 flambe_input_MouseButton.Right = ["Right",2];
+flambe_input_MouseButton.Right.toString = $estr;
 flambe_input_MouseButton.Right.__enum__ = flambe_input_MouseButton;
-flambe_input_MouseButton.Unknown = function(buttonCode) { var $x = ["Unknown",3,buttonCode]; $x.__enum__ = flambe_input_MouseButton; return $x; };
+flambe_input_MouseButton.Unknown = function(buttonCode) { var $x = ["Unknown",3,buttonCode]; $x.__enum__ = flambe_input_MouseButton; $x.toString = $estr; return $x; };
 var flambe_input_MouseCursor = { __ename__ : true, __constructs__ : ["Default","Button","None"] };
 flambe_input_MouseCursor.Default = ["Default",0];
+flambe_input_MouseCursor.Default.toString = $estr;
 flambe_input_MouseCursor.Default.__enum__ = flambe_input_MouseCursor;
 flambe_input_MouseCursor.Button = ["Button",1];
+flambe_input_MouseCursor.Button.toString = $estr;
 flambe_input_MouseCursor.Button.__enum__ = flambe_input_MouseCursor;
 flambe_input_MouseCursor.None = ["None",2];
+flambe_input_MouseCursor.None.toString = $estr;
 flambe_input_MouseCursor.None.__enum__ = flambe_input_MouseCursor;
 var flambe_input_MouseEvent = function() {
 	this.init(0,0,0,null);
@@ -1829,8 +1743,8 @@ flambe_input_MouseEvent.prototype = {
 	,__class__: flambe_input_MouseEvent
 };
 var flambe_input_EventSource = { __ename__ : true, __constructs__ : ["Mouse","Touch"] };
-flambe_input_EventSource.Mouse = function(event) { var $x = ["Mouse",0,event]; $x.__enum__ = flambe_input_EventSource; return $x; };
-flambe_input_EventSource.Touch = function(point) { var $x = ["Touch",1,point]; $x.__enum__ = flambe_input_EventSource; return $x; };
+flambe_input_EventSource.Mouse = function(event) { var $x = ["Mouse",0,event]; $x.__enum__ = flambe_input_EventSource; $x.toString = $estr; return $x; };
+flambe_input_EventSource.Touch = function(point) { var $x = ["Touch",1,point]; $x.__enum__ = flambe_input_EventSource; $x.toString = $estr; return $x; };
 var flambe_input_PointerEvent = function() {
 	this.init(0,0,0,null,null);
 };
@@ -3025,7 +2939,7 @@ var flambe_platform_MainLoop = function() {
 };
 flambe_platform_MainLoop.__name__ = true;
 flambe_platform_MainLoop.updateEntity = function(entity,dt) {
-	var speed = entity._compMap.SpeedAdjuster_3;
+	var speed = entity._compMap.SpeedAdjuster_2;
 	if(speed != null) {
 		speed._realDt = dt;
 		dt *= speed.scale._value;
@@ -4523,14 +4437,14 @@ flambe_scene_Director.prototype = $extend(flambe_Component.prototype,{
 		if(ll > 0) return this.scenes[ll - 1]; else return null;
 	}
 	,show: function(scene) {
-		var events = scene._compMap.Scene_4;
+		var events = scene._compMap.Scene_3;
 		if(events != null) events.shown.emit();
 	}
 	,invalidateVisibility: function() {
 		var ii = this.scenes.length;
 		while(ii > 0) {
 			var scene = this.scenes[--ii];
-			var comp = scene._compMap.Scene_4;
+			var comp = scene._compMap.Scene_3;
 			if(comp == null || comp.opaque) break;
 		}
 		if(this.scenes.length > 0) this.occludedScenes = this.scenes.slice(ii,this.scenes.length - 1); else this.occludedScenes = [];
@@ -4563,7 +4477,7 @@ flambe_scene_Scene.__name__ = true;
 flambe_scene_Scene.__super__ = flambe_Component;
 flambe_scene_Scene.prototype = $extend(flambe_Component.prototype,{
 	get_name: function() {
-		return "Scene_4";
+		return "Scene_3";
 	}
 	,__class__: flambe_scene_Scene
 });
@@ -4579,10 +4493,13 @@ flambe_scene_Transition.prototype = {
 };
 var flambe_subsystem_RendererType = { __ename__ : true, __constructs__ : ["Stage3D","WebGL","Canvas"] };
 flambe_subsystem_RendererType.Stage3D = ["Stage3D",0];
+flambe_subsystem_RendererType.Stage3D.toString = $estr;
 flambe_subsystem_RendererType.Stage3D.__enum__ = flambe_subsystem_RendererType;
 flambe_subsystem_RendererType.WebGL = ["WebGL",1];
+flambe_subsystem_RendererType.WebGL.toString = $estr;
 flambe_subsystem_RendererType.WebGL.__enum__ = flambe_subsystem_RendererType;
 flambe_subsystem_RendererType.Canvas = ["Canvas",2];
+flambe_subsystem_RendererType.Canvas.toString = $estr;
 flambe_subsystem_RendererType.Canvas.__enum__ = flambe_subsystem_RendererType;
 var flambe_util_Assert = function() { };
 flambe_util_Assert.__name__ = true;
@@ -4705,6 +4622,228 @@ flambe_util_Strings.withFields = function(message,fields) {
 	}
 	return message;
 };
+var hams_Audio = function(_name,_sound,_play,_loop,_volume) {
+	if(_volume == null) _volume = 0;
+	if(_loop == null) _loop = false;
+	if(_play == null) _play = false;
+	this.last_position = -1.0;
+	this.playing = false;
+	this.looping = false;
+	this.lerp_amt = 0.1;
+	this.volume = 0.0;
+	this.sound = _sound;
+	this.name = _name;
+	this.type = "SOUND";
+	if(hams_AudioManager.debug) null;
+	if(_play) this.current_playback = this.sound.play(); else if(_loop) this.current_playback = this.sound.loop();
+};
+hams_Audio.__name__ = true;
+hams_Audio.prototype = {
+	update: function() {
+		if(this.current_playback != null) {
+			if(hams_AudioManager.debug) null;
+			this.current_playback.volume.animateTo(this.volume,this.lerp_amt);
+			if(this.current_playback.get_complete().get__()) this.current_playback = null;
+			if(this.current_playback.get_position() < this.last_position && this.looping) {
+				if(hams_AudioManager.debug) null;
+			}
+			this.last_position = this.current_playback.get_position();
+			if(hams_AudioManager.debug) null;
+		} else {
+			this.playing = false;
+			this.looping = false;
+		}
+	}
+	,Loop: function(_volume) {
+		if(_volume == null) _volume = 1;
+		if(this.current_playback != null) return;
+		this.volume = _volume;
+		this.current_playback = this.sound.loop();
+	}
+	,__class__: hams_Audio
+};
+var hams_AudioManager = function(pack,files) {
+	flambe_Component.call(this);
+	this.files_by_label = files;
+	if(this.files_by_label == null) this.files_by_label = new haxe_ds_StringMap();
+	this.assets = pack;
+	this.audio_by_label = new haxe_ds_StringMap();
+	this.load_files(pack);
+	if(hams_AudioManager.debug) null;
+};
+hams_AudioManager.__name__ = true;
+hams_AudioManager.GetInstance = function() {
+	if(hams_AudioManager.Instance == null) throw "Instance not initialized with Asset Pack. Unable to load content. Please initialize in the Main#OnSuccess Method"; else return hams_AudioManager.Instance;
+};
+hams_AudioManager.CreateInstance = function(pack,files) {
+	if(hams_AudioManager.Instance == null && pack != null && files != null) {
+		hams_AudioManager.Instance = new hams_AudioManager(pack,files);
+		return hams_AudioManager.Instance;
+	} else if(hams_AudioManager.Instance != null) throw "Only one instance of AudioManager may exist at a time!"; else if(pack == null) throw "Assets not given to AudioManager; Unable to load audio assets."; else throw "No expected files passed to AudioManager.\nUnable to Initialize.\nIf you want to initialize without having initial files,\nplease pass in an empty array";
+};
+hams_AudioManager.__super__ = flambe_Component;
+hams_AudioManager.prototype = $extend(flambe_Component.prototype,{
+	get_name: function() {
+		return "AudioManager_5";
+	}
+	,onUpdate: function(dt) {
+		var $it0 = this.audio_by_label.keys();
+		while( $it0.hasNext() ) {
+			var name = $it0.next();
+			this.audio_by_label.get(name).update();
+		}
+		var $it1 = this.SongManagers.keys();
+		while( $it1.hasNext() ) {
+			var name1 = $it1.next();
+			this.SongManagers.get(name1).update();
+		}
+	}
+	,load_files: function(_pack) {
+		var $it0 = this.files_by_label.keys();
+		while( $it0.hasNext() ) {
+			var name = $it0.next();
+			if(hams_AudioManager.debug) null;
+			var _path = this.files_by_label.get(name);
+			var sound = _pack.getSound(_path);
+			this.audio_by_label.set(name,new hams_Audio(name,sound,false,null,0));
+		}
+		this.files_by_label = new haxe_ds_StringMap();
+	}
+	,Loop: function(_label,_volume) {
+		if(_volume == null) _volume = 1;
+		this.audio_by_label.get(_label).Loop(_volume);
+	}
+	,__class__: hams_AudioManager
+});
+var hams_Main = function() { };
+hams_Main.__name__ = true;
+hams_Main.main = function() {
+	flambe_System.init();
+	var background = new flambe_display_FillSprite(2105376,flambe_System._platform.getStage().get_width(),flambe_System._platform.getStage().get_height());
+	flambe_System.root.addChild(new flambe_Entity().add(background));
+	var manifest = flambe_asset_Manifest.fromAssets("global");
+	var loader = flambe_System._platform.loadAssetPack(manifest);
+	loader.get(hams_Main.onSuccess);
+	flambe_System.root.addChild(new flambe_Entity().add(new flambe_display_FillSprite(2707565,flambe_System._platform.getStage().get_width(),flambe_System._platform.getStage().get_height())));
+};
+hams_Main.onSuccess = function(pack) {
+	var background = new flambe_display_FillSprite(2105376,flambe_System._platform.getStage().get_width(),flambe_System._platform.getStage().get_height());
+	flambe_System.root.addChild(new flambe_Entity().add(background));
+	var remFont = new flambe_display_Font(pack,"Arial");
+	var spritesheet = pack.getTexture("Hero");
+	var subtextures = spritesheet.split(8,3);
+	var player = new flambe_Entity().add(new flambe_display_ImageSprite(subtextures[0]).setXY(flambe_System._platform.getStage().get_width() / 2,flambe_System._platform.getStage().get_height() / 2)).add(new hams_Player({ walkingBack : subtextures.slice(0,4), walkingFront : subtextures.slice(4,8), walkingLeft : subtextures.slice(8,12), walkingRight : subtextures.slice(12,16), attackingLeft : subtextures.slice(16,18), attackingRight : subtextures.slice(18,20), attackingBack : subtextures.slice(20,22), attackingFront : subtextures.slice(22,24)}));
+	flambe_System.root.addChild(player);
+	var files = new haxe_ds_StringMap();
+	files = new haxe_ds_StringMap();
+	files.set("bgm","deep_leaves/deep_leaves");
+	player._compMap.Player_4.audio = hams_AudioManager.CreateInstance(pack,files);
+	var audio = new flambe_Entity().add(hams_AudioManager.GetInstance());
+	flambe_System.root.addChild(audio);
+	audio._compMap.AudioManager_5.Loop("bgm",0.7);
+	null;
+};
+var hams_Player = function(spriteStates) {
+	this.vY = 0.0;
+	this.vX = 0.0;
+	this.SLOW_DOWN_SPEED = 0.95;
+	var _g = this;
+	flambe_Component.call(this);
+	this._spriteStates = spriteStates;
+	this._currentIndex = 0;
+	this._currentStateArray = spriteStates.walkingFront;
+	this._spriteChangeTimer = new flambe_animation_AnimatedFloat(0,function(next,prev) {
+		if(next < prev) {
+			++_g._currentIndex;
+			_g._currentIndex %= _g._currentStateArray.length;
+		}
+	});
+	this._spriteChangeTimer.set_behavior(new hams_SpriteChangeBehavior(this._spriteChangeTimer));
+};
+hams_Player.__name__ = true;
+hams_Player.__super__ = flambe_Component;
+hams_Player.prototype = $extend(flambe_Component.prototype,{
+	get_name: function() {
+		return "Player_4";
+	}
+	,onUpdate: function(dt) {
+		var sprite = Std.instance(this.owner._compMap.Sprite_0,flambe_display_ImageSprite);
+		sprite.texture = this._currentStateArray[this._currentIndex];
+		this._spriteChangeTimer.update(dt);
+		var MouseX = flambe_System._platform.getPointer().get_x();
+		var MouseY = flambe_System._platform.getPointer().get_y();
+		var scale = 0.5 + 0.2 * sprite.y._value / flambe_System._platform.getStage().get_height();
+		this.vY *= this.SLOW_DOWN_SPEED;
+		this.vX *= this.SLOW_DOWN_SPEED;
+		var key_pressed = false;
+		if(flambe_System._platform.getKeyboard().isDown(flambe_input_Key.Up)) {
+			key_pressed = true;
+			this.vY += -1;
+		}
+		if(flambe_System._platform.getKeyboard().isDown(flambe_input_Key.Down)) {
+			key_pressed = true;
+			this.vY += 1;
+		}
+		if(flambe_System._platform.getKeyboard().isDown(flambe_input_Key.Left)) {
+			key_pressed = true;
+			this.vX += -1;
+		}
+		if(flambe_System._platform.getKeyboard().isDown(flambe_input_Key.Right)) {
+			key_pressed = true;
+			this.vX += 1;
+		}
+		sprite.x.animateBy(this.vX,0.05);
+		sprite.y.animateBy(this.vY,0.05);
+		if(key_pressed) this.setAnimationSprites();
+		if(sprite.x._value + sprite.getNaturalWidth() > flambe_System._platform.getStage().get_width() - 3) {
+			sprite.x.animateTo(flambe_System._platform.getStage().get_width() - 5 - sprite.getNaturalWidth(),0.01);
+			this.vX = 0;
+		} else if(sprite.x._value < 3) {
+			sprite.x.animateTo(5,0.01);
+			this.vX = 0;
+		} else if(sprite.y._value + sprite.getNaturalHeight() > flambe_System._platform.getStage().get_height() - 3) {
+			sprite.y.animateTo(flambe_System._platform.getStage().get_height() - 5 - sprite.getNaturalHeight(),0.01);
+			this.vY = 0;
+		} else if(sprite.y._value < 3) {
+			sprite.y.animateTo(5,0.01);
+			this.vY = 0;
+		}
+		sprite.scaleY.animateTo(2 * scale * flambe_math_FMath.sign(sprite.scaleX._value),0.1);
+	}
+	,setAnimationSprites: function() {
+		if(Math.abs(this.vX) > 1 && Math.abs(this.vX) > Math.abs(this.vY)) {
+			if(this.vX > 0) this._currentStateArray = this._spriteStates.walkingRight; else this._currentStateArray = this._spriteStates.walkingLeft;
+		} else if(this.vY > 0) this._currentStateArray = this._spriteStates.walkingFront; else if(this.vY < 0) this._currentStateArray = this._spriteStates.walkingBack;
+	}
+	,__class__: hams_Player
+});
+var hams_SongManager = function() { };
+hams_SongManager.__name__ = true;
+hams_SongManager.__super__ = flambe_Component;
+hams_SongManager.prototype = $extend(flambe_Component.prototype,{
+	get_name: function() {
+		return "SongManager_6";
+	}
+	,update: function() {
+	}
+	,__class__: hams_SongManager
+});
+var hams_SpriteChangeBehavior = function(spriteChangeTimer) {
+	this._spriteChangeTimer = spriteChangeTimer;
+};
+hams_SpriteChangeBehavior.__name__ = true;
+hams_SpriteChangeBehavior.__interfaces__ = [flambe_animation_Behavior];
+hams_SpriteChangeBehavior.prototype = {
+	update: function(dt) {
+		var temp = this._spriteChangeTimer._value + dt;
+		if(temp > 0.5) return temp - 0.5;
+		return temp;
+	}
+	,isComplete: function() {
+		return false;
+	}
+	,__class__: hams_SpriteChangeBehavior
+};
 var haxe_ds_IntMap = function() {
 	this.h = { };
 };
@@ -4771,231 +4910,6 @@ haxe_rtti_Meta.__name__ = true;
 haxe_rtti_Meta.getType = function(t) {
 	var meta = t.__meta__;
 	if(meta == null || meta.obj == null) return { }; else return meta.obj;
-};
-var haxing_Audio = function(_name,_sound,_play,_loop,_volume) {
-	if(_volume == null) _volume = 0;
-	if(_loop == null) _loop = false;
-	if(_play == null) _play = false;
-	this.last_position = -1.0;
-	this.playing = false;
-	this.looping = false;
-	this.lerp_amt = 0.1;
-	this.volume = 0.0;
-	this.sound = _sound;
-	this.name = _name;
-	this.type = "SOUND";
-	if(haxing_AudioManager.debug) null;
-	if(_play) this.current_playback = this.sound.play(); else if(_loop) this.current_playback = this.sound.loop();
-};
-haxing_Audio.__name__ = true;
-haxing_Audio.prototype = {
-	update: function() {
-		if(this.current_playback != null) {
-			if(haxing_AudioManager.debug) null;
-			this.current_playback.volume.animateTo(this.volume,this.lerp_amt);
-			if(this.current_playback.get_complete().get__()) this.current_playback = null;
-			if(this.current_playback.get_position() < this.last_position && this.looping) {
-				if(haxing_AudioManager.debug) null;
-			}
-			this.last_position = this.current_playback.get_position();
-			if(haxing_AudioManager.debug) null;
-		} else {
-			this.playing = false;
-			this.looping = false;
-		}
-	}
-	,Loop: function(_volume) {
-		if(_volume == null) _volume = 1;
-		if(this.current_playback != null) return;
-		this.volume = _volume;
-		this.current_playback = this.sound.loop();
-	}
-	,__class__: haxing_Audio
-};
-var haxing_AudioManager = function(pack,files) {
-	flambe_Component.call(this);
-	this.files_by_label = files;
-	if(this.files_by_label == null) this.files_by_label = new haxe_ds_StringMap();
-	this.assets = pack;
-	this.audio_by_label = new haxe_ds_StringMap();
-	this.load_files(pack);
-	if(haxing_AudioManager.debug) null;
-};
-haxing_AudioManager.__name__ = true;
-haxing_AudioManager.GetInstance = function() {
-	if(haxing_AudioManager.Instance == null) throw "Instance not initialized with Asset Pack. Unable to load content. Please initialize in the Main#OnSuccess Method"; else return haxing_AudioManager.Instance;
-};
-haxing_AudioManager.CreateInstance = function(pack,files) {
-	if(haxing_AudioManager.Instance == null && pack != null && files != null) {
-		haxing_AudioManager.Instance = new haxing_AudioManager(pack,files);
-		return haxing_AudioManager.Instance;
-	} else if(haxing_AudioManager.Instance != null) throw "Only one instance of AudioManager may exist at a time!"; else if(pack == null) throw "Assets not given to AudioManager; Unable to load audio assets."; else throw "No expected files passed to AudioManager.\nUnable to Initialize.\nIf you want to initialize without having initial files,\nplease pass in an empty array";
-};
-haxing_AudioManager.__super__ = flambe_Component;
-haxing_AudioManager.prototype = $extend(flambe_Component.prototype,{
-	get_name: function() {
-		return "AudioManager_6";
-	}
-	,onUpdate: function(dt) {
-		var $it0 = this.audio_by_label.keys();
-		while( $it0.hasNext() ) {
-			var name = $it0.next();
-			this.audio_by_label.get(name).update();
-		}
-		var $it1 = this.SongManagers.keys();
-		while( $it1.hasNext() ) {
-			var name1 = $it1.next();
-			this.SongManagers.get(name1).update();
-		}
-	}
-	,load_files: function(_pack) {
-		var $it0 = this.files_by_label.keys();
-		while( $it0.hasNext() ) {
-			var name = $it0.next();
-			if(haxing_AudioManager.debug) null;
-			var _path = this.files_by_label.get(name);
-			var sound = _pack.getSound(_path);
-			this.audio_by_label.set(name,new haxing_Audio(name,sound,false,null,0));
-		}
-		this.files_by_label = new haxe_ds_StringMap();
-	}
-	,Loop: function(_label,_volume) {
-		if(_volume == null) _volume = 1;
-		this.audio_by_label.get(_label).Loop(_volume);
-	}
-	,__class__: haxing_AudioManager
-});
-var haxing_Main = function() { };
-haxing_Main.__name__ = true;
-haxing_Main.main = function() {
-	flambe_System.init();
-	var background = new flambe_display_FillSprite(2105376,flambe_System._platform.getStage().get_width(),flambe_System._platform.getStage().get_height());
-	flambe_System.root.addChild(new flambe_Entity().add(background));
-	var manifest = flambe_asset_Manifest.fromAssets("global");
-	var loader = flambe_System._platform.loadAssetPack(manifest);
-	loader.get(haxing_Main.onSuccess);
-	flambe_System.root.addChild(new flambe_Entity().add(new flambe_display_FillSprite(2707565,flambe_System._platform.getStage().get_width(),flambe_System._platform.getStage().get_height())));
-};
-haxing_Main.onSuccess = function(pack) {
-	var background = new flambe_display_FillSprite(2105376,flambe_System._platform.getStage().get_width(),flambe_System._platform.getStage().get_height());
-	flambe_System.root.addChild(new flambe_Entity().add(background));
-	var remFont = new flambe_display_Font(pack,"Arial");
-	var fps = new flambe_Entity().add(new flambe_display_TextSprite(remFont,"0"));
-	fps.add(new flambe_debug_FpsDisplay());
-	flambe_System.root.addChild(fps);
-	var spritesheet = pack.getTexture("Hero");
-	var subtextures = spritesheet.split(8,3);
-	var player = new flambe_Entity().add(new flambe_display_ImageSprite(subtextures[0]).setXY(flambe_System._platform.getStage().get_width() / 2,flambe_System._platform.getStage().get_height() / 2)).add(new haxing_Player({ walkingBack : subtextures.slice(0,4), walkingFront : subtextures.slice(4,8), walkingLeft : subtextures.slice(8,12), walkingRight : subtextures.slice(12,16), attackingLeft : subtextures.slice(16,18), attackingRight : subtextures.slice(18,20), attackingBack : subtextures.slice(20,22), attackingFront : subtextures.slice(22,24)}));
-	flambe_System.root.addChild(player);
-	var files = new haxe_ds_StringMap();
-	files = new haxe_ds_StringMap();
-	files.set("bgm","deep_leaves/deep_leaves");
-	player._compMap.Player_5.audio = haxing_AudioManager.CreateInstance(pack,files);
-	var audio = new flambe_Entity().add(haxing_AudioManager.GetInstance());
-	flambe_System.root.addChild(audio);
-	audio._compMap.AudioManager_6.Loop("bgm",0.7);
-	null;
-};
-var haxing_Player = function(spriteStates) {
-	this.vY = 0.0;
-	this.vX = 0.0;
-	this.SLOW_DOWN_SPEED = 0.95;
-	var _g = this;
-	flambe_Component.call(this);
-	this._spriteStates = spriteStates;
-	this._currentIndex = 0;
-	this._currentStateArray = spriteStates.walkingFront;
-	this._spriteChangeTimer = new flambe_animation_AnimatedFloat(0,function(next,prev) {
-		if(next < prev) {
-			++_g._currentIndex;
-			_g._currentIndex %= _g._currentStateArray.length;
-		}
-	});
-	this._spriteChangeTimer.set_behavior(new haxing_SpriteChangeBehavior(this._spriteChangeTimer));
-};
-haxing_Player.__name__ = true;
-haxing_Player.__super__ = flambe_Component;
-haxing_Player.prototype = $extend(flambe_Component.prototype,{
-	get_name: function() {
-		return "Player_5";
-	}
-	,onUpdate: function(dt) {
-		var sprite = Std.instance(this.owner._compMap.Sprite_0,flambe_display_ImageSprite);
-		sprite.texture = this._currentStateArray[this._currentIndex];
-		this._spriteChangeTimer.update(dt);
-		var MouseX = flambe_System._platform.getPointer().get_x();
-		var MouseY = flambe_System._platform.getPointer().get_y();
-		var scale = 0.5 + 0.2 * sprite.y._value / flambe_System._platform.getStage().get_height();
-		this.vY *= this.SLOW_DOWN_SPEED;
-		this.vX *= this.SLOW_DOWN_SPEED;
-		var key_pressed = false;
-		if(flambe_System._platform.getKeyboard().isDown(flambe_input_Key.Up)) {
-			key_pressed = true;
-			this.vY += -1;
-		}
-		if(flambe_System._platform.getKeyboard().isDown(flambe_input_Key.Down)) {
-			key_pressed = true;
-			this.vY += 1;
-		}
-		if(flambe_System._platform.getKeyboard().isDown(flambe_input_Key.Left)) {
-			key_pressed = true;
-			this.vX += -1;
-		}
-		if(flambe_System._platform.getKeyboard().isDown(flambe_input_Key.Right)) {
-			key_pressed = true;
-			this.vX += 1;
-		}
-		sprite.x.animateBy(this.vX,0.05);
-		sprite.y.animateBy(this.vY,0.05);
-		if(key_pressed) this.setAnimationSprites();
-		if(sprite.x._value + sprite.getNaturalWidth() > flambe_System._platform.getStage().get_width() - 3) {
-			sprite.x.animateTo(flambe_System._platform.getStage().get_width() - 5 - sprite.getNaturalWidth(),0.01);
-			this.vX = 0;
-		} else if(sprite.x._value < 3) {
-			sprite.x.animateTo(5,0.01);
-			this.vX = 0;
-		} else if(sprite.y._value + sprite.getNaturalHeight() > flambe_System._platform.getStage().get_height() - 3) {
-			sprite.y.animateTo(flambe_System._platform.getStage().get_height() - 5 - sprite.getNaturalHeight(),0.01);
-			this.vY = 0;
-		} else if(sprite.y._value < 3) {
-			sprite.y.animateTo(5,0.01);
-			this.vY = 0;
-		}
-		sprite.scaleY.animateTo(2 * scale * flambe_math_FMath.sign(sprite.scaleX._value),0.1);
-	}
-	,setAnimationSprites: function() {
-		if(Math.abs(this.vX) > 1 && Math.abs(this.vX) > Math.abs(this.vY)) {
-			if(this.vX > 0) this._currentStateArray = this._spriteStates.walkingRight; else this._currentStateArray = this._spriteStates.walkingLeft;
-		} else if(this.vY > 0) this._currentStateArray = this._spriteStates.walkingFront; else if(this.vY < 0) this._currentStateArray = this._spriteStates.walkingBack;
-	}
-	,__class__: haxing_Player
-});
-var haxing_SongManager = function() { };
-haxing_SongManager.__name__ = true;
-haxing_SongManager.__super__ = flambe_Component;
-haxing_SongManager.prototype = $extend(flambe_Component.prototype,{
-	get_name: function() {
-		return "SongManager_7";
-	}
-	,update: function() {
-	}
-	,__class__: haxing_SongManager
-});
-var haxing_SpriteChangeBehavior = function(spriteChangeTimer) {
-	this._spriteChangeTimer = spriteChangeTimer;
-};
-haxing_SpriteChangeBehavior.__name__ = true;
-haxing_SpriteChangeBehavior.__interfaces__ = [flambe_animation_Behavior];
-haxing_SpriteChangeBehavior.prototype = {
-	update: function(dt) {
-		var temp = this._spriteChangeTimer._value + dt;
-		if(temp > 0.5) return temp - 0.5;
-		return temp;
-	}
-	,isComplete: function() {
-		return false;
-	}
-	,__class__: haxing_SpriteChangeBehavior
 };
 var js_Boot = function() { };
 js_Boot.__name__ = true;
@@ -5182,6 +5096,6 @@ flambe_platform_html_HtmlUtil.VENDOR_PREFIXES = ["webkit","moz","ms","o","khtml"
 flambe_platform_html_HtmlUtil.SHOULD_HIDE_MOBILE_BROWSER = window.top == window && new EReg("Mobile(/.*)? Safari","").match(window.navigator.userAgent);
 flambe_platform_html_WebAudioSound._detectSupport = true;
 flambe_platform_html_WebGLGraphics._scratchMatrix = new flambe_math_Matrix();
-haxing_AudioManager.debug = true;
-haxing_Main.main();
+hams_AudioManager.debug = true;
+hams_Main.main();
 })();

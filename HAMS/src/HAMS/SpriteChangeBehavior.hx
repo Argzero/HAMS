@@ -1,4 +1,4 @@
-package haxing;
+package hams;
 import flambe.animation.AnimatedFloat;
 import flambe.animation.Behavior;
 import flambe.display.ImageSprite;

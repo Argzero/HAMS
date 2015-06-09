@@ -1,4 +1,4 @@
-package haxing;
+package hams;
 import flambe.animation.AnimatedFloat;
 import flambe.sound.Playback;
 import flambe.sound.Sound;

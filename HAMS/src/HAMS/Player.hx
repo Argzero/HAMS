@@ -1,18 +1,27 @@
-package haxing;
+package hams;
 import flambe.animation.AnimatedFloat;
+import flambe.animation.Behavior;
+import flambe.animation.Ease.EaseFunction;
+import flambe.Component;
 import flambe.display.ImageSprite;
+import flambe.display.Sprite;
 import flambe.display.SubTexture;
 import flambe.input.Key;
+import flambe.subsystem.KeyboardSystem;
 import flambe.System;
-import haxing.SpriteChangeBehavior;
-import haxing.SpriteChangeBehavior.SpriteStates;
+import flambe.math.FMath;
+import flambe.util.Value;
+import hams.SpriteChangeBehavior;
+import hams.SpriteChangeBehavior.SpriteStates;
+
 /**
- * Basic Enemy - Random Walk is current goal
  * @author Argzero
-**/
-class Enemy
-{
-     // private variables
+ * @author YawarRaza7349
+ */
+
+// Player class: Where player interactions affect the game-mode
+class Player extends Component {
+    // private variables
     private var _spriteChangeTimer: AnimatedFloat;
     private var _currentIndex: Int;
     private var _currentStateArray: Array<SubTexture>;
@@ -20,6 +29,7 @@ class Enemy
     private var SLOW_DOWN_SPEED = 0.95;
     private var vX = 0.0;
     private var vY = 0.0;
+    
     // public variables
     public var audio:AudioManager;
     
@@ -52,22 +62,33 @@ class Enemy
         
         vY *= SLOW_DOWN_SPEED;
         vX *= SLOW_DOWN_SPEED;
+        /* USED FOR ANIMATIONS ONLY */
+        var key_pressed = false;
+        /*END SECTION*/
         
-        // Velocity set based on algorithm
-        // @see http://gamedevelopment.tutsplus.com/tutorials/the-three-simple-rules-of-flocking-behaviors-alignment-cohesion-and-separation--gamedev-3444
-        // alignment();
-        // cohesion();
-        // separation();
-        
+        // Velocity increase due to player input
+        if (System.keyboard.isDown(Key.Up)) {
+            key_pressed = true;
+            vY += -1;
+        }
+        if (System.keyboard.isDown(Key.Down)) {
+            key_pressed = true;
+            vY += 1;
+        }
+        if (System.keyboard.isDown(Key.Left)) {
+            key_pressed = true;
+            vX += -1;
+        }
+        if (System.keyboard.isDown(Key.Right)) {
+            key_pressed = true;
+            vX += 1;
+        }
         sprite.x.animateBy(vX, 0.05);
         sprite.y.animateBy(vY, 0.05);
         
-        // REMOVE THIS WHEN STEERING WORKS!
-        sprite.x.animateTo(MouseX, 0.05);// temp
-        sprite.y.animateTo(MouseY, 0.05);// temp
         
         // Sets animation states based on velocity
-        if (vX + vY > 3) {
+        if (key_pressed) {
             setAnimationSprites();
         }
         
