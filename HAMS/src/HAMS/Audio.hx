@@ -13,9 +13,9 @@ class Audio{
     private var sound             :Sound;
     private var volume            :Float = 0.0;
     private var muted             :Bool = false;
-
+    private var length            :Float = 0.0;
     // Current Returned playback from a play or loop call
-    private var current_playback  :Playback;
+    public var current_playback  :Playback;
     // Speed at which to fade to the correct volume
     public var lerp_amt           :Float = 0.1;
     // Bool telling if the Sound was recently Looping or not
@@ -29,8 +29,9 @@ class Audio{
     public function new(_name:String, _sound:Sound, ?_play:Bool = false, ?_loop:Bool = false, _volume:Float = 0) {
         sound = _sound;
         name = _name;
+        length = _sound.duration;
 		type = "SOUND";
-        if(AudioManager.debug){trace(_name + " audio created");}
+        if(AudioManager.debug){trace("<DEBUG msg='" + _name + " audio created'>");}
         if (_play) {
             current_playback = sound.play();
         }
@@ -48,17 +49,23 @@ class Audio{
                 current_playback.dispose();
                 current_playback = null;                
             }
-            if (current_playback.position<last_position && looping) { // looped just now, now do thing
-                
-                if(AudioManager.debug){trace("audio looped!");}
+            if (current_playback != null) {
+                if (current_playback.position<last_position && looping) { // looped just now, now do thing
+                    
+                    if(AudioManager.debug){trace("<DEBUG msg='audio looped!'>");}
+                }
+                last_position = current_playback.position;
+                if(AudioManager.debug){trace("<DEBUG msg='position: " + current_playback.position + "'>");}
             }
-            last_position = current_playback.position;
-            if(AudioManager.debug){trace("position: " + current_playback.position);}
         }
         else {
             playing = false;
             looping = false;
         }
+    }
+
+    public function GetLength():Float{
+        return length;
     }
     
 	public function Stop() {
@@ -137,5 +144,9 @@ class Audio{
             }
         }
         return value_to_go_to;
+    }
+
+    public function GetPlayback():Playback{
+        return current_playback;
     }
 }

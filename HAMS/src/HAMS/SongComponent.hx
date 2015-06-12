@@ -14,6 +14,9 @@ import flambe.sound.Playback;
 class SongComponent {
 	public var tracks:StringMap<Audio>;
 	public var volumes:StringMap<Float>;
+	public var fadeout:StringMap<Float>;
+	public var crossfade_threshold:Float = 1.0;
+
 	private var audio_m:AudioManager;
 	private var song_m:SongManager;
 	
@@ -23,28 +26,61 @@ class SongComponent {
 	    for (x in _tracks.keys()) {
 			_tracks.get(x).SetVolume(0.0);
 			volumes.set(x, 0.0);
+			fadeout.set(x, 1.0);
 		}
 		audio_m = AudioManager.GetInstance();
 		song_m = _songManager;
 	}
 	
-	public function update():Void {
+	public function update() : Void {
+		if(song_m.Crossfade) 
+			setFade();
 		for (_x in tracks.keys()) {
-			audio_m.SetVolume(_x, volumes(_x)*song_m.Volume);
+			audio_m.SetVolume(_x, volumes.get(_x)*song_m.GetVolume()*fadeout.get(_x));
 		}
 	}
 	
-	public function Play(_vol:Float) {
+	public function Play(_vol:Float) : Void {
 		for (x in tracks.keys()) {
 			volumes.set(x, _vol);
 			tracks.get(x).Play(_vol);
 		}
 	}
+
+	public function Loop() : Void {
+		for (x in tracks.keys()) {
+			if(song_m.Crossfade) 
+				tracks.get(x).Play(0.0);
+			else
+				tracks.get(x).Play(volumes.get(x));
+		}
+	}
 	
-	public function Stop() {
+	public function Stop() : Void {
 		for (x in tracks.keys()) {
 			tracks.get(x).Stop();
 		}
+	}
+
+	private function setFade():Void{
+		for (_x in tracks.keys()) {
+			var _playback : Playback = AudioManager.GetPlayback(_x);
+			if(_playback != null){
+				var pos : Float = (_playback.position);
+				var length : Float = AudioManager.get(_x).GetLength();
+				var percent_fade = 1.0;
+
+				if(length-pos < crossfade_threshold)
+					percent_fade = Tools.map(length-pos, 0.0, crossfade_threshold, 0.0, 1.0);
+				fadeout.set(_x,percent_fade);
+			}
+		}	
+	}
+
+	public function SetCrossfadeThreshold(_ct:Float, _sm:SongManager=null):Void{
+		if(_sm!=song_m)
+			throw "<ERROR msg = 'unauthorized use of SetCrossfadeThreshold, please include the reference of the song manager managing this component'>";
+		crossfade_threshold = _ct;
 	}
 }
  

@@ -50,25 +50,7 @@ class Main
         /*var fps = new Entity().add(new TextSprite(remFont, "0"));
         fps.add(new FpsDisplay());
         System.root.addChild(fps);*/ 
-
-        var spritesheet = pack.getTexture("Hero");
-        var subtextures = spritesheet.split(8, 3);
-        
-        // Adds Player to the game
-        var player = new Entity()
-            .add(new ImageSprite(subtextures[0]).setXY(System.stage.width/2, System.stage.height/2))
-            .add(new Player( {
-                walkingBack : subtextures.slice(0, 4),
-                walkingFront : subtextures.slice(4, 8),
-                walkingLeft : subtextures.slice(8, 12),
-                walkingRight : subtextures.slice(12, 16),
-                attackingLeft : subtextures.slice(16, 18),
-                attackingRight : subtextures.slice(18, 20),
-                attackingBack : subtextures.slice(20, 22),
-                attackingFront : subtextures.slice(22, 24)
-            }));
-        System.root.addChild(player);
-        
+                
         var files = new StringMap<String>();
         files = new StringMap<String>();
         //files.set("bgm","deep_leaves/deep_leaves");
@@ -77,7 +59,7 @@ class Main
 		files.set("p1", "fairy_jing/piano_1/piano_1");
 		files.set("p2", "fairy_jing/piano_2/piano_2");
 		files.set("hat", "fairy_jing/hat/hat");
-        player.get(Player).audio = AudioManager.CreateInstance(pack, files);
+        add_player(pack).audio = AudioManager.CreateInstance(pack, files);
         
         var audio_manager = new Entity()
             .add(AudioManager.GetInstance());
@@ -95,20 +77,37 @@ class Main
 		_tracks.set("p2", AudioManager.get("p2"));
 		_tracks.set("hat", AudioManager.get("hat"));
 		_sm.AddSongComponent(0, new SongComponent(_sm, _tracks));
-		
-		// How to Play a Vertically Remixed 
-		var _volume = 1.0;
+
+        // Setting your song to crossfade between tracks
+        _sm.Crossfade = true;
+        _sm.SetCrossfadeThreshold(2.0); // Sets the time before fadeout in seconds
+
+		// How to Play a Vertically Remixed Song
+		var _volume = 0.2;
 		_sm.Loop(_volume);
 		
 		// How to access a SongManager by name
 		// AudioManager.GetInstance().SongManagers.get("fairy_jing");
-		
-        trace("onsuccess COMPLETE");
-        // LEFT FOR DOCUMENTATION PURPOSES AND FOR REFERENCE
-        // Add a plane that moves along the screen
-        // var plane = new ImageSprite(pack.getTexture("plane"));
-        // plane.x._ = 30;
-        // plane.y.animateTo(200, 6);
-        // System.root.addChild(new Entity().add(plane));
+    }
+
+    // Adds Player to the game
+    private static function add_player(pack:AssetPack):Player{
+        var spritesheet = pack.getTexture("Hero");
+        var subtextures = spritesheet.split(8, 3);
+
+        var player = new Entity()
+            .add(new ImageSprite(subtextures[0]).setXY(System.stage.width/2, System.stage.height/2))
+            .add(new Player( {
+                walkingBack : subtextures.slice(0, 4),
+                walkingFront : subtextures.slice(4, 8),
+                walkingLeft : subtextures.slice(8, 12),
+                walkingRight : subtextures.slice(12, 16),
+                attackingLeft : subtextures.slice(16, 18),
+                attackingRight : subtextures.slice(18, 20),
+                attackingBack : subtextures.slice(20, 22),
+                attackingFront : subtextures.slice(22, 24)
+            }));
+        System.root.addChild(player);
+        return player.get(Player);
     }
 }

@@ -48,14 +48,14 @@ class SongManager
 	private var LoopFinished: Bool = false;
 	public var FadeSpeed: Float = 0.1;
 	public var type:SMType = SMType.DEFAULT;
-	
+	public var Crossfade: Bool = false;
     // If the AudioManager is in Debug, so is this
     
     /**
      * Instantiates object. Multiple can be made by user and added to the AudioManager. Allows for multiple backing tracks
      * @param _audioManager AudioManager Singleton-like instance of the game's AudioManager
      */
-    private function new(_audioManager:AudioManager, _approachVolume:Float = 1.0) {
+    public function new(_audioManager:AudioManager, _approachVolume:Float = 1.0) {
         if(AudioManager.debug){
             trace("SongManager instantiated!");
         }
@@ -72,6 +72,7 @@ class SongManager
 			for (s in segments)
 				s.update();
 			if (Looping) {
+				trace("Looping!");
 				var _loop_finished = true;
 				for (t in (segments.get(current_segment)).tracks.keys()) {
 					if (segments.get(current_segment).tracks.get(t).current_playback != null)
@@ -84,6 +85,10 @@ class SongManager
 		}
 		else
 			Volume = LerpFloat(Volume, 0, FadeSpeed);
+	}
+
+	public function GetVolume():Float{
+		return Volume;
 	}
     
 	public function TurnOnHR() {
@@ -103,24 +108,44 @@ class SongManager
 			trace("WARNING: Attempted to play empty SM");
 			return;
 		}
+		if(!Looping)
+			Play(_vol);
+		else{
+			if (SegmentCount() < 1) {
+				trace("WARNING: Attempted to play empty SM");
+				return;
+			}
+			segments.get(current_segment).Loop();
+		}
+
 		Looping = true;
 		LoopFinished = false;
-		Play(_vol);
+		Active = true;
     }
 	
 	public function onLoopFinished():Void {
-		if (type == SMType.DEFAULT)
+		if (type == SMType.DEFAULT){
+			trace("Loop RESET!");
 			Loop();
+		}
 		else {
 			// Change to another Track -- INCOMPLETE
 		}
 	}
 	
+	public function SetCrossfadeThreshold(_ct:Float):Void{
+		if(!Crossfade){
+			throw ("<SONGMANAGER name='" + Index + "' msg='Song is non-crossfade!'");
+		}
+		for(s in segments)
+			s.SetCrossfadeThreshold(_ct);
+	}
+
 	public function AddSongComponent(_index:Int,_sc:SongComponent):Void {
 		segments.set(_index, _sc);
 	}
 	
-	public function SegmentCount():Void {
+	public function SegmentCount():Int {
 		var _count :Int = 0;
 		for (k in segments.keys())
 			_count++;

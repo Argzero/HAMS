@@ -2,6 +2,7 @@ package hams;
 import flambe.asset.AssetPack;
 import flambe.Component;
 import flambe.sound.Sound;
+import flambe.sound.Playback;
 import flambe.util.Strings;
 import haxe.ds.StringMap;
 
@@ -64,17 +65,18 @@ class AudioManager extends Component
     public static function CreateInstance(pack:AssetPack, files:StringMap<String>):AudioManager {
         if (AudioManager.Instance == null && pack!=null && files!=null){
             AudioManager.Instance = new AudioManager(pack, files);
+            AudioManager.Instance.SongManagers = new StringMap<SongManager>();
 			AudioManager.DISALLOWED_TYPES = new Array<String>();
             return AudioManager.Instance;
         }
         else if (AudioManager.Instance != null) {
-            throw "Only one instance of AudioManager may exist at a time!";
+            throw "<ERROR msg='Only one instance of AudioManager may exist at a time!'>";
         }
         else if (pack == null) {
-            throw "Assets not given to AudioManager; Unable to load audio assets.";
+            throw "<ERROR msg='Assets not given to AudioManager; Unable to load audio assets.'>";
         }
         else {
-            throw "No expected files passed to AudioManager.\nUnable to Initialize.\nIf you want to initialize without having initial files,\nplease pass in an empty array";
+            throw "<ERROR msg='No expected files passed to AudioManager.\nUnable to Initialize.\nIf you want to initialize without having initial files,\nplease pass in an empty array'>";
         }
     }
     
@@ -89,7 +91,7 @@ class AudioManager extends Component
     //********************************
     public function DeleteSongManagerAtIndex(name:String):Void {
         if (!SongManagers.exists(name))
-			throw "Dude, that song does not exist.";
+			throw "<ERROR msg='Dude, that song does not exist.'>";
 		SongManagers.get(name).dispose();
     }
     
@@ -114,7 +116,7 @@ class AudioManager extends Component
         //pack.getSound("deep_leaves/deep_leaves");
         
         if(AudioManager.debug){
-            trace("AudioManager instantiated!");
+            trace("<DEBUG msg='AudioManager instantiated!'>");
         }
     }
     
@@ -131,12 +133,16 @@ class AudioManager extends Component
 	public static function get(_label:String):Audio {
 		return GetInstance().GetAudio().get(_label);
 	}
+
+    public static function GetPlayback(_label:String):Playback {
+        return GetInstance().GetAudio().get(_label).GetPlayback();
+    }
     
     // Loads files in the files_by_label collection into the audio_by_label collection
     public function load_files(_pack:AssetPack):Void {
         for (name in files_by_label.keys()) {
             if (AudioManager.debug) {
-                trace(name + " has been added to the AudioManager");
+                trace("<DEBUG msg='" + name + " has been added to the AudioManager'>");
             }
             var _path = files_by_label.get(name);
             var sound = _pack.getSound(_path);

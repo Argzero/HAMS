@@ -1,6 +1,6 @@
 # Basic information about the game.
 name: hams
-description: AudioManagement Example Project.
+description: HAMS Example Project
 
 # Information about the game developer.
 developer:
@@ -17,7 +17,7 @@ version: 0.1.0
 main: hams.Main
 
 # The platform to use when invoking `run` or `build` with no arguments.
-default_platform: html --debug
+default_platform: html
 
 # The initial orientation and fullscreen state on mobile devices.
 orientation: portrait
