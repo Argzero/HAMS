@@ -29,9 +29,11 @@ class AudioManager extends Component
     // Whether the AudioManger should be running in debug or not
     public static var debug:Bool = true;
     
+	public static var DISALLOWED_TYPES: Array<String>;
+	
     // Gets the current singleton instance of the AudioManager object
     public static function GetInstance():AudioManager {
-        if (AudioManager.Instance == null) {
+		if (AudioManager.Instance == null) {
             throw "Instance not initialized with Asset Pack. Unable to load content. Please initialize in the Main#OnSuccess Method";
         }
         else return AudioManager.Instance;
@@ -62,6 +64,7 @@ class AudioManager extends Component
     public static function CreateInstance(pack:AssetPack, files:StringMap<String>):AudioManager {
         if (AudioManager.Instance == null && pack!=null && files!=null){
             AudioManager.Instance = new AudioManager(pack, files);
+			AudioManager.DISALLOWED_TYPES = new Array<String>();
             return AudioManager.Instance;
         }
         else if (AudioManager.Instance != null) {
@@ -78,13 +81,16 @@ class AudioManager extends Component
     //********************************
     public function CreateSongManager(name:String):SongManager {
         var song_manager = new SongManager(this);
+		song_manager.Index = name;
         SongManagers.set(name, song_manager);
         return song_manager;
     }
     
     //********************************
     public function DeleteSongManagerAtIndex(name:String):Void {
-        
+        if (!SongManagers.exists(name))
+			throw "Dude, that song does not exist.";
+		SongManagers.get(name).dispose();
     }
     
     //********************************
@@ -121,6 +127,10 @@ class AudioManager extends Component
             SongManagers.get(name).update();
         }
     }
+	
+	public static function get(_label:String):Audio {
+		return GetInstance().GetAudio().get(_label);
+	}
     
     // Loads files in the files_by_label collection into the audio_by_label collection
     public function load_files(_pack:AssetPack):Void {

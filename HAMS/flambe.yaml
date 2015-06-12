@@ -1,6 +1,6 @@
 # Basic information about the game.
-name: HAMS
-description: Quick run-away game built in Haxe/Flambe.
+name: hams
+description: AudioManagement Example Project.
 
 # Information about the game developer.
 developer:
@@ -8,7 +8,7 @@ developer:
   url: http://argzero.org
 
 # The game's unique identifier.
-id: org.argzero.HAMS
+id: org.argzero.hams
 
 # The game's version string.
 version: 0.1.0
@@ -17,7 +17,7 @@ version: 0.1.0
 main: hams.Main
 
 # The platform to use when invoking `run` or `build` with no arguments.
-default_platform: html
+default_platform: html --debug
 
 # The initial orientation and fullscreen state on mobile devices.
 orientation: portrait

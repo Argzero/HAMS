@@ -67,24 +67,28 @@ class Audio{
 	}
 	
     // Plays sound
-    public function Play(_volume:Float = 1):Void {
+    public function Play(_volume:Float = 1.0):Void {
         if (current_playback != null) { return; }
         volume=_volume;
         current_playback = sound.play();
     }
     
     // Loops sound 
-    public function Loop(_volume:Float = 1):Void {
+    public function Loop(_volume:Float = 1.0):Void {
         if (current_playback != null) { return; }
         volume=_volume;
         current_playback = sound.loop();
     }
 	
-	public function SetVolume(_volume:Float) {
+	public function GetVolume() :Float {
+		return volume;
+	}
+	
+	public function SetVolume(_volume:Float) :Void {
 		volume = _volume;
 	}
 
-    public function SetVolumeNow(_volume:Float) {
+    public function SetVolumeNow(_volume:Float) :Void {
         volume = _volume;
         current_playback.volume.animateTo(_volume,0);
     }

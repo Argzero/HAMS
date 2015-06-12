@@ -71,14 +71,38 @@ class Main
         
         var files = new StringMap<String>();
         files = new StringMap<String>();
-        files.set("bgm","deep_leaves/deep_leaves");
+        //files.set("bgm","deep_leaves/deep_leaves");
+		files.set("drum", "fairy_jing/drum/drum");
+		files.set("wind", "fairy_jing/wind/wind");
+		files.set("p1", "fairy_jing/piano_1/piano_1");
+		files.set("p2", "fairy_jing/piano_2/piano_2");
+		files.set("hat", "fairy_jing/hat/hat");
         player.get(Player).audio = AudioManager.CreateInstance(pack, files);
         
         var audio_manager = new Entity()
             .add(AudioManager.GetInstance());
         System.root.addChild(audio_manager);
-        audio_manager.get(AudioManager).Loop("bgm", 0.7);
         
+		// How to play a Single Piece of Audio on Loop
+		// audio_manager.get(AudioManager).Loop("bgm", 0.7);
+        
+		// How to make a Vertically Remixed song
+		var _sm:SongManager = AudioManager.GetInstance().CreateSongManager("fairy_jing");
+		var _tracks:StringMap<Audio> = new StringMap<Audio>();
+		_tracks.set("drum", AudioManager.get("drum"));
+		_tracks.set("wind", AudioManager.get("wind"));
+		_tracks.set("p1", AudioManager.get("p1"));
+		_tracks.set("p2", AudioManager.get("p2"));
+		_tracks.set("hat", AudioManager.get("hat"));
+		_sm.AddSongComponent(0, new SongComponent(_sm, _tracks));
+		
+		// How to Play a Vertically Remixed 
+		var _volume = 1.0;
+		_sm.Loop(_volume);
+		
+		// How to access a SongManager by name
+		// AudioManager.GetInstance().SongManagers.get("fairy_jing");
+		
         trace("onsuccess COMPLETE");
         // LEFT FOR DOCUMENTATION PURPOSES AND FOR REFERENCE
         // Add a plane that moves along the screen
