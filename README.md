@@ -28,11 +28,11 @@ to use depending upon the platform as instructed in the Flambe documentation, ho
 Argzero implements the AudioManager class.
 
 #ACCREDITATION & LICENSING
-[NOTE THAT THE LICENSE USED IN THIS SOFTWARE AND ITS TERMS ARE LIABLE TO CHANGE AND IT IS YOUR RESPONSIBILITY AS A USER OF THIS SOFTWARE TO TAKE NOTE OF THOSE CHANGES. BY USING, MODIFYING, OR INCORPORATING THIS PROJECT INTO YOUR OWN WORK, YOU INDICATE THAT YOU AGREE TO THESE TERMS]
+[NOTE THAT THE LICENSE USED IN THIS SOFTWARE AND ITS TERMS ARE LIABLE TO CHANGE AND IT IS YOUR RESPONSIBILITY AS A USER OF THIS SOFTWARE TO TAKE NOTE OF THOSE CHANGES. BY USING, MODIFYING, OR INCORPORATING THIS PROJECT INTO YOUR OWN WORK, YOU INDICATE THAT YOU AGREE TO THESE TERMS; TO CEASE FOLLOWING THE AGREEMENT, CEASE ALL USE OF THE HAMS SYSTEM OR ITS VARIOUS PARTS IN ALL PROJECTS. IF YOU HAVE HAMS IN ANY PROJECT THIS AGREEMENT STILL STANDS]
 
 IF AT ANY POINT ARGZERO IS USED AS A TITLE IN THIS DOCUMENT, IT MAY BE INTERCHANGED WITH FORREST ZACHARY SHOOSTER, EXCEPT UNDER CIRCUMSTANCES WHICH LAW REQUIRES ARGZERO'S REAL NAME TO AUTHORIZE OR RESTRICT USAGE OR LICENSING OF THIS PROJECT. ESSENTIALLY, IF IT APPLIES TO ARGZERO, IT ALSO APPLIES TO FORREST ZACHARY SHOOSTER.
 
-To use the Haxe Audio Management System, You must give credit to Argzero for use. Otherwise, you may feel free to modify the code or use it in other projects, however know that in modifying the code for your purposes you should notify Argzero of your use of HAMS at his email at forrest@argzero.org. If Argzero is already aware of your use of his project, you are excluded from the requirement of notifying him of your use of the AudioManager.
+To use the Haxe Audio Management System, You must give credit to Argzero for use. Otherwise, you may feel free to modify the code or use it in other projects, however know that in modifying the code for your purposes you should (MUST) notify Argzero of your use of HAMS at his email at forrest@argzero.org. If Argzero is already aware of your use of his project, you are excluded from the requirement of notifying him of your use of the AudioManager.
 
 Additionally, Argzero does humbly request that you notify him of any improvements you have come up with for his HAMS so that he may continue to provide quality HAMS in the future both for your sake and his.
 
