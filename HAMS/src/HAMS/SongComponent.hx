@@ -23,6 +23,8 @@ class SongComponent {
 	public function new(_songManager:SongManager, _tracks:StringMap<Audio>) {
 		tracks = _tracks;
 		volumes = new StringMap<Float>();
+		fadeout = new StringMap<Float>();
+		volumes = new StringMap<Float>();
 	    for (x in _tracks.keys()) {
 			_tracks.get(x).SetVolume(0.0);
 			volumes.set(x, 0.0);

@@ -68,7 +68,7 @@ class SongManager
     // Runs each time update is called
     public function update() {
 		if (Active){
-			Volume = LerpFloat(Volume, ApproachVolume, FadeSpeed);
+			Volume = Tools.LerpFloat(Volume, ApproachVolume, FadeSpeed);
 			for (s in segments)
 				s.update();
 			if (Looping) {
@@ -84,7 +84,7 @@ class SongManager
 			}
 		}
 		else
-			Volume = LerpFloat(Volume, 0, FadeSpeed);
+			Volume = Tools.LerpFloat(Volume, 0, FadeSpeed);
 	}
 
 	public function GetVolume():Float{
@@ -138,7 +138,7 @@ class SongManager
 			throw ("<SONGMANAGER name='" + Index + "' msg='Song is non-crossfade!'");
 		}
 		for(s in segments)
-			s.SetCrossfadeThreshold(_ct);
+			s.SetCrossfadeThreshold(_ct,this);
 	}
 
 	public function AddSongComponent(_index:Int,_sc:SongComponent):Void {
@@ -155,27 +155,4 @@ class SongManager
 	public function dispose():Void {
 		
 	}
-	
-	// Moves float slightly closer to target value based on a specific amount of change
-    public function LerpFloat(from:Float, to:Float, _amt:Float):Float { // FOR GENERAL FLOAT
-        var increase = false;
-        if (from < to) {
-            increase = true;
-        }
-        else 
-            increase = false;
-        
-        var value_to_go_to = from + _amt;
-        if (increase) {
-            if (value_to_go_to > to) {
-                value_to_go_to = to;
-            }
-        }
-        else {
-            if (value_to_go_to < to) {
-                value_to_go_to = to;
-            }
-        }
-        return value_to_go_to;
-    }
 }

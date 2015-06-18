@@ -99,52 +99,6 @@ class Audio{
         volume = _volume;
         current_playback.volume.animateTo(_volume,0);
     }
-    
-    // Moves float slightly closer to target value based on a specific amount of change
-    public function Lerp(from:AnimatedFloat, to:Float, _amt:Float):Float { // FOR ANIMATED FLOAT
-        var increase = false;
-        if (from._ < to) {
-            increase = true;
-        }
-        else 
-            increase = false;
-        
-        var value_to_go_to = from._ + _amt;
-        if (increase) {
-            if (value_to_go_to > to) {
-                value_to_go_to = to;
-            }
-        }
-        else {
-            if (value_to_go_to < to) {
-                value_to_go_to = to;
-            }
-        }
-        return value_to_go_to;
-    }
-    
-    // Moves float slightly closer to target value based on a specific amount of change
-    public function LerpFloat(from:Float, to:Float, _amt:Float):Float { // FOR GENERAL FLOAT
-        var increase = false;
-        if (from < to) {
-            increase = true;
-        }
-        else 
-            increase = false;
-        
-        var value_to_go_to = from + _amt;
-        if (increase) {
-            if (value_to_go_to > to) {
-                value_to_go_to = to;
-            }
-        }
-        else {
-            if (value_to_go_to < to) {
-                value_to_go_to = to;
-            }
-        }
-        return value_to_go_to;
-    }
 
     public function GetPlayback():Playback{
         return current_playback;
