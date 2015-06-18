@@ -92,6 +92,8 @@ class Main
 
 		var _volume = 0.2;
 		_sm.Loop(_volume);
+
+        
         var ups = [Key.Q,Key.W,Key.E,Key.R,Key.T,Key.Y];
         var downs = [Key.A,Key.S,Key.D,Key.F,Key.G, Key.H];
 		var _index = 0;
