@@ -50,6 +50,7 @@ class SongComponent {
 	}
 
 	public function Loop() : Void {
+		trace("CROSSFADE!");
 		for (x in tracks.keys()) {
 			if(song_m.Crossfade) 
 				tracks.get(x).Play(0.0);
@@ -83,6 +84,18 @@ class SongComponent {
 		if(_sm!=song_m)
 			throw "<ERROR msg = 'unauthorized use of SetCrossfadeThreshold, please include the reference of the song manager managing this component'>";
 		crossfade_threshold = _ct;
+	}
+
+	public function GetSongManagerName():String{
+		return song_m.GetName();
+	}
+
+	public function SetTrackVolume(_name:String, _vol:Float):Void {
+		volumes.set(_name,_vol);
+	}
+
+	public function GetTrackVolume(_name:String):Float {
+		return volumes.get(_name);
 	}
 }
  

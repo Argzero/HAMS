@@ -1,4 +1,5 @@
 package hams;
+import hams.Scrollbar;
 //import flambe.debug.FpsDisplay;
 import flambe.display.Font;
 import flambe.display.PatternSprite;
@@ -13,7 +14,8 @@ import flambe.display.FillSprite;
 import flambe.display.ImageSprite;
 import flambe.System.keyboard;
 import haxe.ds.StringMap;
-
+import flambe.input.Key;
+import flambe.subsystem.KeyboardSystem;
 class Main
 {
     // Main function for the game
@@ -33,14 +35,15 @@ class Main
         System.root.addChild(new Entity()
             .add(new FillSprite(0x29506d, System.stage.width, System.stage.height)));
     }
-
+    public static var assetPack: AssetPack;
     /* Loads AssetPack into Game and Initializes the AudioManager, 
      * Player, and Enemy(UNIMPLEMENTED) class data
      * 
      * @param pack AssetPack returned when assets have loaded successfully
      */
     private static function onSuccess (pack :AssetPack)
-    {
+    {   
+        assetPack = pack;
         // Add a solid color background
         var background = new FillSprite(0x202020, System.stage.width, System.stage.height);
         System.root.addChild(new Entity()
@@ -83,10 +86,33 @@ class Main
         _sm.SetCrossfadeThreshold(2.0); // Sets the time before fadeout in seconds
 
 		// How to Play a Vertically Remixed Song
+
+
+
+
 		var _volume = 0.2;
 		_sm.Loop(_volume);
-		
-		// How to access a SongManager by name
+        var ups = [Key.Q,Key.W,Key.E,Key.R,Key.T,Key.Y];
+        var downs = [Key.A,Key.S,Key.D,Key.F,Key.G, Key.H];
+		var _index = 0;
+        for(t in _tracks.keys()){
+            var s : Scrollbar = new Scrollbar(t, Scrollbar.SCROLL_BAR_TYPE.COMPONENT, _sm.GetName());
+            s.up = ups.pop();
+            s.down = downs.pop();
+            var bar :Entity = new Entity().add(s);
+            s.setXY(_index * (System.stage.width/(7)) + 0.5*(System.stage.width/(7)), 0);
+            System.root.addChild(bar);
+            _index++;
+        }
+        var _smb : Scrollbar = new Scrollbar(_sm.GetName(), SCROLL_BAR_TYPE.MANAGER);
+        _smb.up = ups.pop();
+        _smb.down = downs.pop();
+        var m_bar :Entity = new Entity().add(_smb);
+        _smb.setXY(_index * (System.stage.width/(7)) + 0.5*(System.stage.width/(7)), 0);
+        System.root.addChild(m_bar);
+          
+
+        // How to access a SongManager by name
 		// AudioManager.GetInstance().SongManagers.get("fairy_jing");
     }
 

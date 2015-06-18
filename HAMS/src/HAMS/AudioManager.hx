@@ -28,7 +28,7 @@ class AudioManager extends Component
     public var SongManagers:StringMap<SongManager>;
 
     // Whether the AudioManger should be running in debug or not
-    public static var debug:Bool = true;
+    public static var debug:Bool = false;
     
 	public static var DISALLOWED_TYPES: Array<String>;
 	

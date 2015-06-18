@@ -78,6 +78,15 @@ class Audio{
         if (current_playback != null) { return; }
         volume=_volume;
         current_playback = sound.play();
+        current_playback.volume._ = _volume;
+    }
+
+    // Plays sound
+    public function PlayFade(_volume:Float = 1.0):Void {
+        if (current_playback != null) { return; }
+        volume=_volume;
+        current_playback = sound.play();
+        current_playback.volume._ = 0;
     }
     
     // Loops sound 

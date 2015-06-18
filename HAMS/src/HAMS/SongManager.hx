@@ -87,10 +87,18 @@ class SongManager
 			Volume = Tools.LerpFloat(Volume, 0, FadeSpeed);
 	}
 
+	public function GetName():String{
+		return Index;
+	}
+
 	public function GetVolume():Float{
 		return Volume;
 	}
     
+    public function SetVolume(_vol:Float):Void{
+		Volume=_vol;
+	}
+
 	public function TurnOnHR() {
 		type = SMType.HORIZONTAL_RESEQUENCING;
 	}
@@ -152,6 +160,10 @@ class SongManager
 		return _count;
 	}
 	
+	public function GetCurrentSegment():SongComponent{
+		return segments.get(current_segment);
+	}
+
 	public function dispose():Void {
 		
 	}
