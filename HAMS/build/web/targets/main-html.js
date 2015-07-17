@@ -1,5 +1,5 @@
 (function () { "use strict";
-var $hxClasses = {};
+var $hxClasses = {},$estr = function() { return js_Boot.__string_rec(this,''); };
 function $extend(from, fields) {
 	function Inherit() {} Inherit.prototype = from; var proto = new Inherit();
 	for (var name in fields) proto[name] = fields[name];
@@ -866,7 +866,7 @@ flambe_SpeedAdjuster.__name__ = true;
 flambe_SpeedAdjuster.__super__ = flambe_Component;
 flambe_SpeedAdjuster.prototype = $extend(flambe_Component.prototype,{
 	get_name: function() {
-		return "SpeedAdjuster_2";
+		return "SpeedAdjuster_4";
 	}
 	,onUpdate: function(dt) {
 		if(this._realDt > 0) {
@@ -918,32 +918,46 @@ flambe_asset_Asset.prototype = {
 };
 var flambe_asset_AssetFormat = $hxClasses["flambe.asset.AssetFormat"] = { __ename__ : true, __constructs__ : ["WEBP","JXR","PNG","JPG","GIF","DDS","PVR","PKM","MP3","M4A","OPUS","OGG","WAV","Data"] };
 flambe_asset_AssetFormat.WEBP = ["WEBP",0];
+flambe_asset_AssetFormat.WEBP.toString = $estr;
 flambe_asset_AssetFormat.WEBP.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.JXR = ["JXR",1];
+flambe_asset_AssetFormat.JXR.toString = $estr;
 flambe_asset_AssetFormat.JXR.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.PNG = ["PNG",2];
+flambe_asset_AssetFormat.PNG.toString = $estr;
 flambe_asset_AssetFormat.PNG.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.JPG = ["JPG",3];
+flambe_asset_AssetFormat.JPG.toString = $estr;
 flambe_asset_AssetFormat.JPG.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.GIF = ["GIF",4];
+flambe_asset_AssetFormat.GIF.toString = $estr;
 flambe_asset_AssetFormat.GIF.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.DDS = ["DDS",5];
+flambe_asset_AssetFormat.DDS.toString = $estr;
 flambe_asset_AssetFormat.DDS.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.PVR = ["PVR",6];
+flambe_asset_AssetFormat.PVR.toString = $estr;
 flambe_asset_AssetFormat.PVR.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.PKM = ["PKM",7];
+flambe_asset_AssetFormat.PKM.toString = $estr;
 flambe_asset_AssetFormat.PKM.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.MP3 = ["MP3",8];
+flambe_asset_AssetFormat.MP3.toString = $estr;
 flambe_asset_AssetFormat.MP3.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.M4A = ["M4A",9];
+flambe_asset_AssetFormat.M4A.toString = $estr;
 flambe_asset_AssetFormat.M4A.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.OPUS = ["OPUS",10];
+flambe_asset_AssetFormat.OPUS.toString = $estr;
 flambe_asset_AssetFormat.OPUS.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.OGG = ["OGG",11];
+flambe_asset_AssetFormat.OGG.toString = $estr;
 flambe_asset_AssetFormat.OGG.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.WAV = ["WAV",12];
+flambe_asset_AssetFormat.WAV.toString = $estr;
 flambe_asset_AssetFormat.WAV.__enum__ = flambe_asset_AssetFormat;
 flambe_asset_AssetFormat.Data = ["Data",13];
+flambe_asset_AssetFormat.Data.toString = $estr;
 flambe_asset_AssetFormat.Data.__enum__ = flambe_asset_AssetFormat;
 var flambe_asset_AssetEntry = function(name,url,format,bytes) {
 	this.name = name;
@@ -1078,16 +1092,22 @@ flambe_asset_Manifest.prototype = {
 };
 var flambe_display_BlendMode = $hxClasses["flambe.display.BlendMode"] = { __ename__ : true, __constructs__ : ["Normal","Add","Multiply","Screen","Mask","Copy"] };
 flambe_display_BlendMode.Normal = ["Normal",0];
+flambe_display_BlendMode.Normal.toString = $estr;
 flambe_display_BlendMode.Normal.__enum__ = flambe_display_BlendMode;
 flambe_display_BlendMode.Add = ["Add",1];
+flambe_display_BlendMode.Add.toString = $estr;
 flambe_display_BlendMode.Add.__enum__ = flambe_display_BlendMode;
 flambe_display_BlendMode.Multiply = ["Multiply",2];
+flambe_display_BlendMode.Multiply.toString = $estr;
 flambe_display_BlendMode.Multiply.__enum__ = flambe_display_BlendMode;
 flambe_display_BlendMode.Screen = ["Screen",3];
+flambe_display_BlendMode.Screen.toString = $estr;
 flambe_display_BlendMode.Screen.__enum__ = flambe_display_BlendMode;
 flambe_display_BlendMode.Mask = ["Mask",4];
+flambe_display_BlendMode.Mask.toString = $estr;
 flambe_display_BlendMode.Mask.__enum__ = flambe_display_BlendMode;
 flambe_display_BlendMode.Copy = ["Copy",5];
+flambe_display_BlendMode.Copy.toString = $estr;
 flambe_display_BlendMode.Copy.__enum__ = flambe_display_BlendMode;
 var flambe_math_Point = function(x,y) {
 	if(y == null) y = 0;
@@ -1126,7 +1146,7 @@ $hxClasses["flambe.display.Sprite"] = flambe_display_Sprite;
 flambe_display_Sprite.__name__ = true;
 flambe_display_Sprite.hitTest = function(entity,x,y) {
 	var sprite;
-	var component = entity.getComponent("Sprite_0");
+	var component = entity.getComponent("Sprite_2");
 	sprite = component;
 	if(sprite != null) {
 		if(!flambe_util_BitSets.containsAll(sprite._flags,2 | 4)) return null;
@@ -1143,7 +1163,7 @@ flambe_display_Sprite.hitTest = function(entity,x,y) {
 };
 flambe_display_Sprite.render = function(entity,g) {
 	var sprite;
-	var component = entity.getComponent("Sprite_0");
+	var component = entity.getComponent("Sprite_2");
 	sprite = component;
 	if(sprite != null) {
 		var alpha = sprite.alpha.get__();
@@ -1164,7 +1184,7 @@ flambe_display_Sprite.render = function(entity,g) {
 		sprite.draw(g);
 	}
 	var director;
-	var component1 = entity.getComponent("Director_1");
+	var component1 = entity.getComponent("Director_3");
 	director = component1;
 	if(director != null) {
 		var scenes = director.occludedScenes;
@@ -1193,7 +1213,7 @@ flambe_display_Sprite.hitTestBackwards = function(entity,x,y) {
 flambe_display_Sprite.__super__ = flambe_Component;
 flambe_display_Sprite.prototype = $extend(flambe_Component.prototype,{
 	get_name: function() {
-		return "Sprite_0";
+		return "Sprite_2";
 	}
 	,getNaturalWidth: function() {
 		return 0;
@@ -1243,7 +1263,7 @@ flambe_display_Sprite.prototype = $extend(flambe_Component.prototype,{
 		var entity = this.owner.parent;
 		while(entity != null) {
 			var sprite;
-			var component = entity.getComponent("Sprite_0");
+			var component = entity.getComponent("Sprite_2");
 			sprite = component;
 			if(sprite != null) return sprite;
 			entity = entity.parent;
@@ -1564,8 +1584,10 @@ flambe_display_ImageSprite.prototype = $extend(flambe_display_Sprite.prototype,{
 });
 var flambe_display_Orientation = $hxClasses["flambe.display.Orientation"] = { __ename__ : true, __constructs__ : ["Portrait","Landscape"] };
 flambe_display_Orientation.Portrait = ["Portrait",0];
+flambe_display_Orientation.Portrait.toString = $estr;
 flambe_display_Orientation.Portrait.__enum__ = flambe_display_Orientation;
 flambe_display_Orientation.Landscape = ["Landscape",1];
+flambe_display_Orientation.Landscape.toString = $estr;
 flambe_display_Orientation.Landscape.__enum__ = flambe_display_Orientation;
 var flambe_display_Texture = function() { };
 $hxClasses["flambe.display.Texture"] = flambe_display_Texture;
@@ -1580,206 +1602,306 @@ flambe_display_SubTexture.__name__ = true;
 flambe_display_SubTexture.__interfaces__ = [flambe_display_Texture];
 var flambe_input_Key = $hxClasses["flambe.input.Key"] = { __ename__ : true, __constructs__ : ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","Number0","Number1","Number2","Number3","Number4","Number5","Number6","Number7","Number8","Number9","Numpad0","Numpad1","Numpad2","Numpad3","Numpad4","Numpad5","Numpad6","Numpad7","Numpad8","Numpad9","NumpadAdd","NumpadDecimal","NumpadDivide","NumpadEnter","NumpadMultiply","NumpadSubtract","F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12","F13","F14","F15","Left","Up","Right","Down","Alt","Backquote","Backslash","Backspace","CapsLock","Comma","Command","Control","Delete","End","Enter","Equals","Escape","Home","Insert","LeftBracket","Minus","PageDown","PageUp","Period","Quote","RightBracket","Semicolon","Shift","Slash","Space","Tab","Menu","Search","Unknown"] };
 flambe_input_Key.A = ["A",0];
+flambe_input_Key.A.toString = $estr;
 flambe_input_Key.A.__enum__ = flambe_input_Key;
 flambe_input_Key.B = ["B",1];
+flambe_input_Key.B.toString = $estr;
 flambe_input_Key.B.__enum__ = flambe_input_Key;
 flambe_input_Key.C = ["C",2];
+flambe_input_Key.C.toString = $estr;
 flambe_input_Key.C.__enum__ = flambe_input_Key;
 flambe_input_Key.D = ["D",3];
+flambe_input_Key.D.toString = $estr;
 flambe_input_Key.D.__enum__ = flambe_input_Key;
 flambe_input_Key.E = ["E",4];
+flambe_input_Key.E.toString = $estr;
 flambe_input_Key.E.__enum__ = flambe_input_Key;
 flambe_input_Key.F = ["F",5];
+flambe_input_Key.F.toString = $estr;
 flambe_input_Key.F.__enum__ = flambe_input_Key;
 flambe_input_Key.G = ["G",6];
+flambe_input_Key.G.toString = $estr;
 flambe_input_Key.G.__enum__ = flambe_input_Key;
 flambe_input_Key.H = ["H",7];
+flambe_input_Key.H.toString = $estr;
 flambe_input_Key.H.__enum__ = flambe_input_Key;
 flambe_input_Key.I = ["I",8];
+flambe_input_Key.I.toString = $estr;
 flambe_input_Key.I.__enum__ = flambe_input_Key;
 flambe_input_Key.J = ["J",9];
+flambe_input_Key.J.toString = $estr;
 flambe_input_Key.J.__enum__ = flambe_input_Key;
 flambe_input_Key.K = ["K",10];
+flambe_input_Key.K.toString = $estr;
 flambe_input_Key.K.__enum__ = flambe_input_Key;
 flambe_input_Key.L = ["L",11];
+flambe_input_Key.L.toString = $estr;
 flambe_input_Key.L.__enum__ = flambe_input_Key;
 flambe_input_Key.M = ["M",12];
+flambe_input_Key.M.toString = $estr;
 flambe_input_Key.M.__enum__ = flambe_input_Key;
 flambe_input_Key.N = ["N",13];
+flambe_input_Key.N.toString = $estr;
 flambe_input_Key.N.__enum__ = flambe_input_Key;
 flambe_input_Key.O = ["O",14];
+flambe_input_Key.O.toString = $estr;
 flambe_input_Key.O.__enum__ = flambe_input_Key;
 flambe_input_Key.P = ["P",15];
+flambe_input_Key.P.toString = $estr;
 flambe_input_Key.P.__enum__ = flambe_input_Key;
 flambe_input_Key.Q = ["Q",16];
+flambe_input_Key.Q.toString = $estr;
 flambe_input_Key.Q.__enum__ = flambe_input_Key;
 flambe_input_Key.R = ["R",17];
+flambe_input_Key.R.toString = $estr;
 flambe_input_Key.R.__enum__ = flambe_input_Key;
 flambe_input_Key.S = ["S",18];
+flambe_input_Key.S.toString = $estr;
 flambe_input_Key.S.__enum__ = flambe_input_Key;
 flambe_input_Key.T = ["T",19];
+flambe_input_Key.T.toString = $estr;
 flambe_input_Key.T.__enum__ = flambe_input_Key;
 flambe_input_Key.U = ["U",20];
+flambe_input_Key.U.toString = $estr;
 flambe_input_Key.U.__enum__ = flambe_input_Key;
 flambe_input_Key.V = ["V",21];
+flambe_input_Key.V.toString = $estr;
 flambe_input_Key.V.__enum__ = flambe_input_Key;
 flambe_input_Key.W = ["W",22];
+flambe_input_Key.W.toString = $estr;
 flambe_input_Key.W.__enum__ = flambe_input_Key;
 flambe_input_Key.X = ["X",23];
+flambe_input_Key.X.toString = $estr;
 flambe_input_Key.X.__enum__ = flambe_input_Key;
 flambe_input_Key.Y = ["Y",24];
+flambe_input_Key.Y.toString = $estr;
 flambe_input_Key.Y.__enum__ = flambe_input_Key;
 flambe_input_Key.Z = ["Z",25];
+flambe_input_Key.Z.toString = $estr;
 flambe_input_Key.Z.__enum__ = flambe_input_Key;
 flambe_input_Key.Number0 = ["Number0",26];
+flambe_input_Key.Number0.toString = $estr;
 flambe_input_Key.Number0.__enum__ = flambe_input_Key;
 flambe_input_Key.Number1 = ["Number1",27];
+flambe_input_Key.Number1.toString = $estr;
 flambe_input_Key.Number1.__enum__ = flambe_input_Key;
 flambe_input_Key.Number2 = ["Number2",28];
+flambe_input_Key.Number2.toString = $estr;
 flambe_input_Key.Number2.__enum__ = flambe_input_Key;
 flambe_input_Key.Number3 = ["Number3",29];
+flambe_input_Key.Number3.toString = $estr;
 flambe_input_Key.Number3.__enum__ = flambe_input_Key;
 flambe_input_Key.Number4 = ["Number4",30];
+flambe_input_Key.Number4.toString = $estr;
 flambe_input_Key.Number4.__enum__ = flambe_input_Key;
 flambe_input_Key.Number5 = ["Number5",31];
+flambe_input_Key.Number5.toString = $estr;
 flambe_input_Key.Number5.__enum__ = flambe_input_Key;
 flambe_input_Key.Number6 = ["Number6",32];
+flambe_input_Key.Number6.toString = $estr;
 flambe_input_Key.Number6.__enum__ = flambe_input_Key;
 flambe_input_Key.Number7 = ["Number7",33];
+flambe_input_Key.Number7.toString = $estr;
 flambe_input_Key.Number7.__enum__ = flambe_input_Key;
 flambe_input_Key.Number8 = ["Number8",34];
+flambe_input_Key.Number8.toString = $estr;
 flambe_input_Key.Number8.__enum__ = flambe_input_Key;
 flambe_input_Key.Number9 = ["Number9",35];
+flambe_input_Key.Number9.toString = $estr;
 flambe_input_Key.Number9.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad0 = ["Numpad0",36];
+flambe_input_Key.Numpad0.toString = $estr;
 flambe_input_Key.Numpad0.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad1 = ["Numpad1",37];
+flambe_input_Key.Numpad1.toString = $estr;
 flambe_input_Key.Numpad1.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad2 = ["Numpad2",38];
+flambe_input_Key.Numpad2.toString = $estr;
 flambe_input_Key.Numpad2.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad3 = ["Numpad3",39];
+flambe_input_Key.Numpad3.toString = $estr;
 flambe_input_Key.Numpad3.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad4 = ["Numpad4",40];
+flambe_input_Key.Numpad4.toString = $estr;
 flambe_input_Key.Numpad4.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad5 = ["Numpad5",41];
+flambe_input_Key.Numpad5.toString = $estr;
 flambe_input_Key.Numpad5.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad6 = ["Numpad6",42];
+flambe_input_Key.Numpad6.toString = $estr;
 flambe_input_Key.Numpad6.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad7 = ["Numpad7",43];
+flambe_input_Key.Numpad7.toString = $estr;
 flambe_input_Key.Numpad7.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad8 = ["Numpad8",44];
+flambe_input_Key.Numpad8.toString = $estr;
 flambe_input_Key.Numpad8.__enum__ = flambe_input_Key;
 flambe_input_Key.Numpad9 = ["Numpad9",45];
+flambe_input_Key.Numpad9.toString = $estr;
 flambe_input_Key.Numpad9.__enum__ = flambe_input_Key;
 flambe_input_Key.NumpadAdd = ["NumpadAdd",46];
+flambe_input_Key.NumpadAdd.toString = $estr;
 flambe_input_Key.NumpadAdd.__enum__ = flambe_input_Key;
 flambe_input_Key.NumpadDecimal = ["NumpadDecimal",47];
+flambe_input_Key.NumpadDecimal.toString = $estr;
 flambe_input_Key.NumpadDecimal.__enum__ = flambe_input_Key;
 flambe_input_Key.NumpadDivide = ["NumpadDivide",48];
+flambe_input_Key.NumpadDivide.toString = $estr;
 flambe_input_Key.NumpadDivide.__enum__ = flambe_input_Key;
 flambe_input_Key.NumpadEnter = ["NumpadEnter",49];
+flambe_input_Key.NumpadEnter.toString = $estr;
 flambe_input_Key.NumpadEnter.__enum__ = flambe_input_Key;
 flambe_input_Key.NumpadMultiply = ["NumpadMultiply",50];
+flambe_input_Key.NumpadMultiply.toString = $estr;
 flambe_input_Key.NumpadMultiply.__enum__ = flambe_input_Key;
 flambe_input_Key.NumpadSubtract = ["NumpadSubtract",51];
+flambe_input_Key.NumpadSubtract.toString = $estr;
 flambe_input_Key.NumpadSubtract.__enum__ = flambe_input_Key;
 flambe_input_Key.F1 = ["F1",52];
+flambe_input_Key.F1.toString = $estr;
 flambe_input_Key.F1.__enum__ = flambe_input_Key;
 flambe_input_Key.F2 = ["F2",53];
+flambe_input_Key.F2.toString = $estr;
 flambe_input_Key.F2.__enum__ = flambe_input_Key;
 flambe_input_Key.F3 = ["F3",54];
+flambe_input_Key.F3.toString = $estr;
 flambe_input_Key.F3.__enum__ = flambe_input_Key;
 flambe_input_Key.F4 = ["F4",55];
+flambe_input_Key.F4.toString = $estr;
 flambe_input_Key.F4.__enum__ = flambe_input_Key;
 flambe_input_Key.F5 = ["F5",56];
+flambe_input_Key.F5.toString = $estr;
 flambe_input_Key.F5.__enum__ = flambe_input_Key;
 flambe_input_Key.F6 = ["F6",57];
+flambe_input_Key.F6.toString = $estr;
 flambe_input_Key.F6.__enum__ = flambe_input_Key;
 flambe_input_Key.F7 = ["F7",58];
+flambe_input_Key.F7.toString = $estr;
 flambe_input_Key.F7.__enum__ = flambe_input_Key;
 flambe_input_Key.F8 = ["F8",59];
+flambe_input_Key.F8.toString = $estr;
 flambe_input_Key.F8.__enum__ = flambe_input_Key;
 flambe_input_Key.F9 = ["F9",60];
+flambe_input_Key.F9.toString = $estr;
 flambe_input_Key.F9.__enum__ = flambe_input_Key;
 flambe_input_Key.F10 = ["F10",61];
+flambe_input_Key.F10.toString = $estr;
 flambe_input_Key.F10.__enum__ = flambe_input_Key;
 flambe_input_Key.F11 = ["F11",62];
+flambe_input_Key.F11.toString = $estr;
 flambe_input_Key.F11.__enum__ = flambe_input_Key;
 flambe_input_Key.F12 = ["F12",63];
+flambe_input_Key.F12.toString = $estr;
 flambe_input_Key.F12.__enum__ = flambe_input_Key;
 flambe_input_Key.F13 = ["F13",64];
+flambe_input_Key.F13.toString = $estr;
 flambe_input_Key.F13.__enum__ = flambe_input_Key;
 flambe_input_Key.F14 = ["F14",65];
+flambe_input_Key.F14.toString = $estr;
 flambe_input_Key.F14.__enum__ = flambe_input_Key;
 flambe_input_Key.F15 = ["F15",66];
+flambe_input_Key.F15.toString = $estr;
 flambe_input_Key.F15.__enum__ = flambe_input_Key;
 flambe_input_Key.Left = ["Left",67];
+flambe_input_Key.Left.toString = $estr;
 flambe_input_Key.Left.__enum__ = flambe_input_Key;
 flambe_input_Key.Up = ["Up",68];
+flambe_input_Key.Up.toString = $estr;
 flambe_input_Key.Up.__enum__ = flambe_input_Key;
 flambe_input_Key.Right = ["Right",69];
+flambe_input_Key.Right.toString = $estr;
 flambe_input_Key.Right.__enum__ = flambe_input_Key;
 flambe_input_Key.Down = ["Down",70];
+flambe_input_Key.Down.toString = $estr;
 flambe_input_Key.Down.__enum__ = flambe_input_Key;
 flambe_input_Key.Alt = ["Alt",71];
+flambe_input_Key.Alt.toString = $estr;
 flambe_input_Key.Alt.__enum__ = flambe_input_Key;
 flambe_input_Key.Backquote = ["Backquote",72];
+flambe_input_Key.Backquote.toString = $estr;
 flambe_input_Key.Backquote.__enum__ = flambe_input_Key;
 flambe_input_Key.Backslash = ["Backslash",73];
+flambe_input_Key.Backslash.toString = $estr;
 flambe_input_Key.Backslash.__enum__ = flambe_input_Key;
 flambe_input_Key.Backspace = ["Backspace",74];
+flambe_input_Key.Backspace.toString = $estr;
 flambe_input_Key.Backspace.__enum__ = flambe_input_Key;
 flambe_input_Key.CapsLock = ["CapsLock",75];
+flambe_input_Key.CapsLock.toString = $estr;
 flambe_input_Key.CapsLock.__enum__ = flambe_input_Key;
 flambe_input_Key.Comma = ["Comma",76];
+flambe_input_Key.Comma.toString = $estr;
 flambe_input_Key.Comma.__enum__ = flambe_input_Key;
 flambe_input_Key.Command = ["Command",77];
+flambe_input_Key.Command.toString = $estr;
 flambe_input_Key.Command.__enum__ = flambe_input_Key;
 flambe_input_Key.Control = ["Control",78];
+flambe_input_Key.Control.toString = $estr;
 flambe_input_Key.Control.__enum__ = flambe_input_Key;
 flambe_input_Key.Delete = ["Delete",79];
+flambe_input_Key.Delete.toString = $estr;
 flambe_input_Key.Delete.__enum__ = flambe_input_Key;
 flambe_input_Key.End = ["End",80];
+flambe_input_Key.End.toString = $estr;
 flambe_input_Key.End.__enum__ = flambe_input_Key;
 flambe_input_Key.Enter = ["Enter",81];
+flambe_input_Key.Enter.toString = $estr;
 flambe_input_Key.Enter.__enum__ = flambe_input_Key;
 flambe_input_Key.Equals = ["Equals",82];
+flambe_input_Key.Equals.toString = $estr;
 flambe_input_Key.Equals.__enum__ = flambe_input_Key;
 flambe_input_Key.Escape = ["Escape",83];
+flambe_input_Key.Escape.toString = $estr;
 flambe_input_Key.Escape.__enum__ = flambe_input_Key;
 flambe_input_Key.Home = ["Home",84];
+flambe_input_Key.Home.toString = $estr;
 flambe_input_Key.Home.__enum__ = flambe_input_Key;
 flambe_input_Key.Insert = ["Insert",85];
+flambe_input_Key.Insert.toString = $estr;
 flambe_input_Key.Insert.__enum__ = flambe_input_Key;
 flambe_input_Key.LeftBracket = ["LeftBracket",86];
+flambe_input_Key.LeftBracket.toString = $estr;
 flambe_input_Key.LeftBracket.__enum__ = flambe_input_Key;
 flambe_input_Key.Minus = ["Minus",87];
+flambe_input_Key.Minus.toString = $estr;
 flambe_input_Key.Minus.__enum__ = flambe_input_Key;
 flambe_input_Key.PageDown = ["PageDown",88];
+flambe_input_Key.PageDown.toString = $estr;
 flambe_input_Key.PageDown.__enum__ = flambe_input_Key;
 flambe_input_Key.PageUp = ["PageUp",89];
+flambe_input_Key.PageUp.toString = $estr;
 flambe_input_Key.PageUp.__enum__ = flambe_input_Key;
 flambe_input_Key.Period = ["Period",90];
+flambe_input_Key.Period.toString = $estr;
 flambe_input_Key.Period.__enum__ = flambe_input_Key;
 flambe_input_Key.Quote = ["Quote",91];
+flambe_input_Key.Quote.toString = $estr;
 flambe_input_Key.Quote.__enum__ = flambe_input_Key;
 flambe_input_Key.RightBracket = ["RightBracket",92];
+flambe_input_Key.RightBracket.toString = $estr;
 flambe_input_Key.RightBracket.__enum__ = flambe_input_Key;
 flambe_input_Key.Semicolon = ["Semicolon",93];
+flambe_input_Key.Semicolon.toString = $estr;
 flambe_input_Key.Semicolon.__enum__ = flambe_input_Key;
 flambe_input_Key.Shift = ["Shift",94];
+flambe_input_Key.Shift.toString = $estr;
 flambe_input_Key.Shift.__enum__ = flambe_input_Key;
 flambe_input_Key.Slash = ["Slash",95];
+flambe_input_Key.Slash.toString = $estr;
 flambe_input_Key.Slash.__enum__ = flambe_input_Key;
 flambe_input_Key.Space = ["Space",96];
+flambe_input_Key.Space.toString = $estr;
 flambe_input_Key.Space.__enum__ = flambe_input_Key;
 flambe_input_Key.Tab = ["Tab",97];
+flambe_input_Key.Tab.toString = $estr;
 flambe_input_Key.Tab.__enum__ = flambe_input_Key;
 flambe_input_Key.Menu = ["Menu",98];
+flambe_input_Key.Menu.toString = $estr;
 flambe_input_Key.Menu.__enum__ = flambe_input_Key;
 flambe_input_Key.Search = ["Search",99];
+flambe_input_Key.Search.toString = $estr;
 flambe_input_Key.Search.__enum__ = flambe_input_Key;
-flambe_input_Key.Unknown = function(keyCode) { var $x = ["Unknown",100,keyCode]; $x.__enum__ = flambe_input_Key; return $x; };
+flambe_input_Key.Unknown = function(keyCode) { var $x = ["Unknown",100,keyCode]; $x.__enum__ = flambe_input_Key; $x.toString = $estr; return $x; };
 var flambe_input_KeyboardEvent = function() {
 	this.init(0,null);
 };
@@ -1794,18 +1916,24 @@ flambe_input_KeyboardEvent.prototype = {
 };
 var flambe_input_MouseButton = $hxClasses["flambe.input.MouseButton"] = { __ename__ : true, __constructs__ : ["Left","Middle","Right","Unknown"] };
 flambe_input_MouseButton.Left = ["Left",0];
+flambe_input_MouseButton.Left.toString = $estr;
 flambe_input_MouseButton.Left.__enum__ = flambe_input_MouseButton;
 flambe_input_MouseButton.Middle = ["Middle",1];
+flambe_input_MouseButton.Middle.toString = $estr;
 flambe_input_MouseButton.Middle.__enum__ = flambe_input_MouseButton;
 flambe_input_MouseButton.Right = ["Right",2];
+flambe_input_MouseButton.Right.toString = $estr;
 flambe_input_MouseButton.Right.__enum__ = flambe_input_MouseButton;
-flambe_input_MouseButton.Unknown = function(buttonCode) { var $x = ["Unknown",3,buttonCode]; $x.__enum__ = flambe_input_MouseButton; return $x; };
+flambe_input_MouseButton.Unknown = function(buttonCode) { var $x = ["Unknown",3,buttonCode]; $x.__enum__ = flambe_input_MouseButton; $x.toString = $estr; return $x; };
 var flambe_input_MouseCursor = $hxClasses["flambe.input.MouseCursor"] = { __ename__ : true, __constructs__ : ["Default","Button","None"] };
 flambe_input_MouseCursor.Default = ["Default",0];
+flambe_input_MouseCursor.Default.toString = $estr;
 flambe_input_MouseCursor.Default.__enum__ = flambe_input_MouseCursor;
 flambe_input_MouseCursor.Button = ["Button",1];
+flambe_input_MouseCursor.Button.toString = $estr;
 flambe_input_MouseCursor.Button.__enum__ = flambe_input_MouseCursor;
 flambe_input_MouseCursor.None = ["None",2];
+flambe_input_MouseCursor.None.toString = $estr;
 flambe_input_MouseCursor.None.__enum__ = flambe_input_MouseCursor;
 var flambe_input_MouseEvent = function() {
 	this.init(0,0,0,null);
@@ -1822,8 +1950,8 @@ flambe_input_MouseEvent.prototype = {
 	,__class__: flambe_input_MouseEvent
 };
 var flambe_input_EventSource = $hxClasses["flambe.input.EventSource"] = { __ename__ : true, __constructs__ : ["Mouse","Touch"] };
-flambe_input_EventSource.Mouse = function(event) { var $x = ["Mouse",0,event]; $x.__enum__ = flambe_input_EventSource; return $x; };
-flambe_input_EventSource.Touch = function(point) { var $x = ["Touch",1,point]; $x.__enum__ = flambe_input_EventSource; return $x; };
+flambe_input_EventSource.Mouse = function(event) { var $x = ["Mouse",0,event]; $x.__enum__ = flambe_input_EventSource; $x.toString = $estr; return $x; };
+flambe_input_EventSource.Touch = function(point) { var $x = ["Touch",1,point]; $x.__enum__ = flambe_input_EventSource; $x.toString = $estr; return $x; };
 var flambe_input_PointerEvent = function() {
 	this.init(0,0,0,null,null);
 };
@@ -2415,7 +2543,7 @@ flambe_platform_BasicPointer.prototype = {
 			var entity = hit.owner;
 			do {
 				var sprite;
-				var component = entity.getComponent("Sprite_0");
+				var component = entity.getComponent("Sprite_2");
 				sprite = component;
 				if(sprite != null) chain.push(sprite);
 				entity = entity.parent;
@@ -2439,7 +2567,7 @@ flambe_platform_BasicPointer.prototype = {
 			var entity = hit.owner;
 			do {
 				var sprite;
-				var component = entity.getComponent("Sprite_0");
+				var component = entity.getComponent("Sprite_2");
 				sprite = component;
 				if(sprite != null) chain.push(sprite);
 				entity = entity.parent;
@@ -2465,7 +2593,7 @@ flambe_platform_BasicPointer.prototype = {
 			var entity = hit.owner;
 			do {
 				var sprite;
-				var component = entity.getComponent("Sprite_0");
+				var component = entity.getComponent("Sprite_2");
 				sprite = component;
 				if(sprite != null) chain.push(sprite);
 				entity = entity.parent;
@@ -3219,7 +3347,7 @@ $hxClasses["flambe.platform.MainLoop"] = flambe_platform_MainLoop;
 flambe_platform_MainLoop.__name__ = true;
 flambe_platform_MainLoop.updateEntity = function(entity,dt) {
 	var speed;
-	var component = entity.getComponent("SpeedAdjuster_2");
+	var component = entity.getComponent("SpeedAdjuster_4");
 	speed = component;
 	if(speed != null) {
 		speed._realDt = dt;
@@ -4912,7 +5040,7 @@ flambe_scene_Director.__name__ = true;
 flambe_scene_Director.__super__ = flambe_Component;
 flambe_scene_Director.prototype = $extend(flambe_Component.prototype,{
 	get_name: function() {
-		return "Director_1";
+		return "Director_3";
 	}
 	,onAdded: function() {
 		this.owner.addChild(this._root);
@@ -4939,7 +5067,7 @@ flambe_scene_Director.prototype = $extend(flambe_Component.prototype,{
 	}
 	,show: function(scene) {
 		var events;
-		var component = scene.getComponent("Scene_3");
+		var component = scene.getComponent("Scene_5");
 		events = component;
 		if(events != null) events.shown.emit();
 	}
@@ -4948,7 +5076,7 @@ flambe_scene_Director.prototype = $extend(flambe_Component.prototype,{
 		while(ii > 0) {
 			var scene = this.scenes[--ii];
 			var comp;
-			var component = scene.getComponent("Scene_3");
+			var component = scene.getComponent("Scene_5");
 			comp = component;
 			if(comp == null || comp.opaque) break;
 		}
@@ -4984,7 +5112,7 @@ flambe_scene_Scene.__name__ = true;
 flambe_scene_Scene.__super__ = flambe_Component;
 flambe_scene_Scene.prototype = $extend(flambe_Component.prototype,{
 	get_name: function() {
-		return "Scene_3";
+		return "Scene_5";
 	}
 	,__class__: flambe_scene_Scene
 });
@@ -5001,10 +5129,13 @@ flambe_scene_Transition.prototype = {
 };
 var flambe_subsystem_RendererType = $hxClasses["flambe.subsystem.RendererType"] = { __ename__ : true, __constructs__ : ["Stage3D","WebGL","Canvas"] };
 flambe_subsystem_RendererType.Stage3D = ["Stage3D",0];
+flambe_subsystem_RendererType.Stage3D.toString = $estr;
 flambe_subsystem_RendererType.Stage3D.__enum__ = flambe_subsystem_RendererType;
 flambe_subsystem_RendererType.WebGL = ["WebGL",1];
+flambe_subsystem_RendererType.WebGL.toString = $estr;
 flambe_subsystem_RendererType.WebGL.__enum__ = flambe_subsystem_RendererType;
 flambe_subsystem_RendererType.Canvas = ["Canvas",2];
+flambe_subsystem_RendererType.Canvas.toString = $estr;
 flambe_subsystem_RendererType.Canvas.__enum__ = flambe_subsystem_RendererType;
 var flambe_util_Assert = function() { };
 $hxClasses["flambe.util.Assert"] = flambe_util_Assert;
@@ -5035,10 +5166,13 @@ flambe_util_BitSets.containsAll = function(bits,mask) {
 };
 var flambe_util_LogLevel = $hxClasses["flambe.util.LogLevel"] = { __ename__ : true, __constructs__ : ["Info","Warn","Error"] };
 flambe_util_LogLevel.Info = ["Info",0];
+flambe_util_LogLevel.Info.toString = $estr;
 flambe_util_LogLevel.Info.__enum__ = flambe_util_LogLevel;
 flambe_util_LogLevel.Warn = ["Warn",1];
+flambe_util_LogLevel.Warn.toString = $estr;
 flambe_util_LogLevel.Warn.__enum__ = flambe_util_LogLevel;
 flambe_util_LogLevel.Error = ["Error",2];
+flambe_util_LogLevel.Error.toString = $estr;
 flambe_util_LogLevel.Error.__enum__ = flambe_util_LogLevel;
 var flambe_util_Promise = function() {
 	this.success = new flambe_util_Signal1();
@@ -5212,6 +5346,7 @@ hams_Audio.prototype = {
 		if(this.current_playback != null) return;
 		this.volume = _volume;
 		this.current_playback = this.sound.play();
+		this.current_playback.volume.set__(_volume);
 	}
 	,SetVolume: function(_volume) {
 		this.volume = _volume;
@@ -5252,7 +5387,7 @@ hams_AudioManager.GetPlayback = function(_label) {
 hams_AudioManager.__super__ = flambe_Component;
 hams_AudioManager.prototype = $extend(flambe_Component.prototype,{
 	get_name: function() {
-		return "AudioManager_5";
+		return "AudioManager_1";
 	}
 	,GetAudio: function() {
 		return this.audio_by_label;
@@ -5304,6 +5439,7 @@ hams_Main.main = function() {
 	flambe_System.root.addChild(new flambe_Entity().add(new flambe_display_FillSprite(2707565,flambe_System.get_stage().get_width(),flambe_System.get_stage().get_height())));
 };
 hams_Main.onSuccess = function(pack) {
+	hams_Main.assetPack = pack;
 	var background = new flambe_display_FillSprite(2105376,flambe_System.get_stage().get_width(),flambe_System.get_stage().get_height());
 	flambe_System.root.addChild(new flambe_Entity().add(background));
 	var remFont = new flambe_display_Font(pack,"Arial");
@@ -5329,13 +5465,33 @@ hams_Main.onSuccess = function(pack) {
 	_sm.SetCrossfadeThreshold(2.0);
 	var _volume = 0.2;
 	_sm.Loop(_volume);
+	var ups = [flambe_input_Key.Q,flambe_input_Key.W,flambe_input_Key.E,flambe_input_Key.R,flambe_input_Key.T,flambe_input_Key.Y];
+	var downs = [flambe_input_Key.A,flambe_input_Key.S,flambe_input_Key.D,flambe_input_Key.F,flambe_input_Key.G,flambe_input_Key.H];
+	var _index = 0;
+	var $it0 = _tracks.keys();
+	while( $it0.hasNext() ) {
+		var t = $it0.next();
+		var s = new hams_Scrollbar(t,hams_SCROLL_$BAR_$TYPE.COMPONENT,_sm.GetName());
+		s.up = ups.pop();
+		s.down = downs.pop();
+		var bar = new flambe_Entity().add(s);
+		s.setXY(_index * (flambe_System.get_stage().get_width() / 7) + 0.5 * (flambe_System.get_stage().get_width() / 7),0);
+		flambe_System.root.addChild(bar);
+		_index++;
+	}
+	var _smb = new hams_Scrollbar(_sm.GetName(),hams_SCROLL_$BAR_$TYPE.MANAGER);
+	_smb.up = ups.pop();
+	_smb.down = downs.pop();
+	var m_bar = new flambe_Entity().add(_smb);
+	_smb.setXY(_index * (flambe_System.get_stage().get_width() / 7) + 0.5 * (flambe_System.get_stage().get_width() / 7),0);
+	flambe_System.root.addChild(m_bar);
 };
 hams_Main.add_player = function(pack) {
 	var spritesheet = pack.getTexture("Hero");
 	var subtextures = spritesheet.split(8,3);
 	var player = new flambe_Entity().add(new flambe_display_ImageSprite(subtextures[0]).setXY(flambe_System.get_stage().get_width() / 2,flambe_System.get_stage().get_height() / 2)).add(new hams_Player({ walkingBack : subtextures.slice(0,4), walkingFront : subtextures.slice(4,8), walkingLeft : subtextures.slice(8,12), walkingRight : subtextures.slice(12,16), attackingLeft : subtextures.slice(16,18), attackingRight : subtextures.slice(18,20), attackingBack : subtextures.slice(20,22), attackingFront : subtextures.slice(22,24)}));
 	flambe_System.root.addChild(player);
-	var component = player.getComponent("Player_4");
+	var component = player.getComponent("Player_0");
 	return component;
 };
 var hams_Player = function(spriteStates) {
@@ -5360,10 +5516,10 @@ hams_Player.__name__ = true;
 hams_Player.__super__ = flambe_Component;
 hams_Player.prototype = $extend(flambe_Component.prototype,{
 	get_name: function() {
-		return "Player_4";
+		return "Player_0";
 	}
 	,onUpdate: function(dt) {
-		var sprite = Std.instance(this.owner.getComponent("Sprite_0"),flambe_display_ImageSprite);
+		var sprite = Std.instance(this.owner.getComponent("Sprite_2"),flambe_display_ImageSprite);
 		sprite.texture = this._currentStateArray[this._currentIndex];
 		this._spriteChangeTimer.update(dt);
 		var MouseX = flambe_System.get_pointer().get_x();
@@ -5413,9 +5569,77 @@ hams_Player.prototype = $extend(flambe_Component.prototype,{
 	}
 	,__class__: hams_Player
 });
+var hams_SCROLL_$BAR_$TYPE = $hxClasses["hams.SCROLL_BAR_TYPE"] = { __ename__ : true, __constructs__ : ["COMPONENT","MANAGER"] };
+hams_SCROLL_$BAR_$TYPE.COMPONENT = ["COMPONENT",0];
+hams_SCROLL_$BAR_$TYPE.COMPONENT.toString = $estr;
+hams_SCROLL_$BAR_$TYPE.COMPONENT.__enum__ = hams_SCROLL_$BAR_$TYPE;
+hams_SCROLL_$BAR_$TYPE.MANAGER = ["MANAGER",1];
+hams_SCROLL_$BAR_$TYPE.MANAGER.toString = $estr;
+hams_SCROLL_$BAR_$TYPE.MANAGER.__enum__ = hams_SCROLL_$BAR_$TYPE;
+var hams_Scrollbar = function(_key,_type,_songManagerName) {
+	if(_songManagerName == null) _songManagerName = "";
+	this.down = null;
+	this.up = null;
+	this.component = null;
+	this.bottom = flambe_System.get_stage().get_height();
+	this.position = 0;
+	this.top = 0;
+	this.song_m = null;
+	this.key = "";
+	this.type = hams_SCROLL_$BAR_$TYPE.COMPONENT;
+	this.key = _key;
+	this.type = _type;
+	if(this.type == hams_SCROLL_$BAR_$TYPE.COMPONENT) this.song_m = hams_AudioManager.GetInstance().SongManagers.get(_songManagerName); else if(this.type == hams_SCROLL_$BAR_$TYPE.MANAGER) this.song_m = hams_AudioManager.GetInstance().SongManagers.get(_key);
+	var tex = hams_Main.assetPack.getTexture("box");
+	this.bottom = flambe_System.get_stage().get_height() - tex.get_height() - 100;
+	flambe_display_ImageSprite.call(this,tex);
+};
+$hxClasses["hams.Scrollbar"] = hams_Scrollbar;
+hams_Scrollbar.__name__ = true;
+hams_Scrollbar.__super__ = flambe_display_ImageSprite;
+hams_Scrollbar.prototype = $extend(flambe_display_ImageSprite.prototype,{
+	GetVolume: function() {
+		if(this.type == hams_SCROLL_$BAR_$TYPE.MANAGER) return this.song_m.GetVolume(); else {
+			this.component = this.song_m.GetCurrentSegment();
+			return this.component.GetTrackVolume(this.key);
+		}
+		return -1;
+	}
+	,SetVolume: function(_vol) {
+		if(_vol < 0) _vol = 0;
+		if(this.type == hams_SCROLL_$BAR_$TYPE.MANAGER) return this.song_m.SetVolume(_vol); else {
+			this.component = this.song_m.GetCurrentSegment();
+			return this.component.SetTrackVolume(this.key,_vol);
+		}
+	}
+	,onUpdate: function(dt) {
+		this.SetVolume(hams_Tools.map(this.position,this.top,this.bottom,1,0));
+		this.y.set__((1 - hams_Tools.map(this.position,this.top,this.bottom,1,0)) * (this.bottom - this.top));
+		console.log("VOLUME: " + this.GetVolume());
+		if(flambe_System.get_keyboard().isDown(this.up)) {
+			this.position -= flambe_System.get_stage().get_height() * 0.01;
+			if(this.position < this.top) this.position = this.top;
+		}
+		if(flambe_System.get_keyboard().isDown(this.down)) {
+			this.position += flambe_System.get_stage().get_height() * 0.01;
+			if(this.position > this.bottom) this.position = this.bottom;
+		}
+		if(flambe_System.get_keyboard().isDown(hams_Scrollbar.MASTER_UP)) {
+			this.position -= flambe_System.get_stage().get_height() * 0.01;
+			if(this.position < this.top) this.position = this.top;
+		}
+		if(flambe_System.get_keyboard().isDown(hams_Scrollbar.MASTER_DOWN)) {
+			this.position += flambe_System.get_stage().get_height() * 0.01;
+			if(this.position > this.bottom) this.position = this.bottom;
+		}
+	}
+	,__class__: hams_Scrollbar
+});
 var hams_SongComponent = function(_songManager,_tracks) {
 	this.crossfade_threshold = 1.0;
 	this.tracks = _tracks;
+	this.volumes = new haxe_ds_StringMap();
+	this.fadeout = new haxe_ds_StringMap();
 	this.volumes = new haxe_ds_StringMap();
 	var $it0 = _tracks.keys();
 	while( $it0.hasNext() ) {
@@ -5447,6 +5671,7 @@ hams_SongComponent.prototype = {
 		}
 	}
 	,Loop: function() {
+		console.log("CROSSFADE!");
 		var $it0 = this.tracks.keys();
 		while( $it0.hasNext() ) {
 			var x = $it0.next();
@@ -5471,12 +5696,20 @@ hams_SongComponent.prototype = {
 		if(_sm != this.song_m) throw "<ERROR msg = 'unauthorized use of SetCrossfadeThreshold, please include the reference of the song manager managing this component'>";
 		this.crossfade_threshold = _ct;
 	}
+	,SetTrackVolume: function(_name,_vol) {
+		this.volumes.set(_name,_vol);
+	}
+	,GetTrackVolume: function(_name) {
+		return this.volumes.get(_name);
+	}
 	,__class__: hams_SongComponent
 };
 var hams_SMType = $hxClasses["hams.SMType"] = { __ename__ : true, __constructs__ : ["DEFAULT","HORIZONTAL_RESEQUENCING"] };
 hams_SMType.DEFAULT = ["DEFAULT",0];
+hams_SMType.DEFAULT.toString = $estr;
 hams_SMType.DEFAULT.__enum__ = hams_SMType;
 hams_SMType.HORIZONTAL_RESEQUENCING = ["HORIZONTAL_RESEQUENCING",1];
+hams_SMType.HORIZONTAL_RESEQUENCING.toString = $estr;
 hams_SMType.HORIZONTAL_RESEQUENCING.__enum__ = hams_SMType;
 var hams_SongManager = function(_audioManager,_approachVolume) {
 	if(_approachVolume == null) _approachVolume = 1.0;
@@ -5499,7 +5732,7 @@ hams_SongManager.__name__ = true;
 hams_SongManager.prototype = {
 	update: function() {
 		if(this.Active) {
-			this.Volume = this.LerpFloat(this.Volume,this.ApproachVolume,this.FadeSpeed);
+			this.Volume = hams_Tools.LerpFloat(this.Volume,this.ApproachVolume,this.FadeSpeed);
 			var $it0 = this.segments.iterator();
 			while( $it0.hasNext() ) {
 				var s = $it0.next();
@@ -5515,10 +5748,16 @@ hams_SongManager.prototype = {
 				}
 				if(_loop_finished) this.onLoopFinished();
 			}
-		} else this.Volume = this.LerpFloat(this.Volume,0,this.FadeSpeed);
+		} else this.Volume = hams_Tools.LerpFloat(this.Volume,0,this.FadeSpeed);
+	}
+	,GetName: function() {
+		return this.Index;
 	}
 	,GetVolume: function() {
 		return this.Volume;
+	}
+	,SetVolume: function(_vol) {
+		this.Volume = _vol;
 	}
 	,Play: function(_vol) {
 		if(_vol == null) _vol = 1.0;
@@ -5557,7 +5796,7 @@ hams_SongManager.prototype = {
 		var $it0 = this.segments.iterator();
 		while( $it0.hasNext() ) {
 			var s = $it0.next();
-			s.SetCrossfadeThreshold(_ct);
+			s.SetCrossfadeThreshold(_ct,this);
 		}
 	}
 	,AddSongComponent: function(_index,_sc) {
@@ -5572,14 +5811,8 @@ hams_SongManager.prototype = {
 		}
 		return _count;
 	}
-	,LerpFloat: function(from,to,_amt) {
-		var increase = false;
-		if(from < to) increase = true; else increase = false;
-		var value_to_go_to = from + _amt;
-		if(increase) {
-			if(value_to_go_to > to) value_to_go_to = to;
-		} else if(value_to_go_to < to) value_to_go_to = to;
-		return value_to_go_to;
+	,GetCurrentSegment: function() {
+		return this.segments.get(this.current_segment);
 	}
 	,__class__: hams_SongManager
 };
@@ -5606,6 +5839,15 @@ hams_Tools.__name__ = true;
 hams_Tools.map = function(_x,_lowI,_highI,_lowF,_highF) {
 	var percent = (_x - _lowI) / (_highI - _lowI);
 	return percent * (_highF - _lowF) + _lowF;
+};
+hams_Tools.LerpFloat = function(from,to,_amt) {
+	var increase = false;
+	if(from < to) increase = true; else increase = false;
+	var value_to_go_to = from + _amt;
+	if(increase) {
+		if(value_to_go_to > to) value_to_go_to = to;
+	} else if(value_to_go_to < to) value_to_go_to = to;
+	return value_to_go_to;
 };
 var haxe_ds_IntMap = function() {
 	this.h = { };
@@ -5865,7 +6107,7 @@ flambe_System.volume = new flambe_animation_AnimatedFloat(1);
 flambe_System._platform = flambe_platform_html_HtmlPlatform.instance;
 flambe_System._calledInit = false;
 flambe_Log.logger = flambe_System.createLogger("flambe");
-flambe_asset_Manifest.__meta__ = { obj : { assets : [{ global : [{ bytes : 799, md5 : "b06744bc67ac2a07d5f39c6567d681a7", name : "Arial.bmfc"},{ bytes : 62781, md5 : "a846e319f4a9656b1e1c364e100d9878", name : "Arial.fnt"},{ bytes : 73484, md5 : "6cf73fdfb5cfab748e6be8ad116898ca", name : "Arial_0.png"},{ bytes : 50156, md5 : "ff09074903482600cb59b570b2f096a1", name : "CherryCreamSoda.ttf"},{ bytes : 2629713, md5 : "f7188d4d4900d9bac7a840f72d9702cd", name : "deep_leaves/deep_leaves.m4a"},{ bytes : 1707862, md5 : "bbfea731439f0ab6d0454953eeb52fda", name : "deep_leaves/deep_leaves.mp3"},{ bytes : 1613503, md5 : "b6dff50ed992f47546881c874e08bc03", name : "deep_leaves/deep_leaves.ogg"},{ bytes : 147037, md5 : "1b8b738b317a6cc6180a2b5301f2738a", name : "fairy_jing/drum/drum.mp3"},{ bytes : 165911, md5 : "f9e73272272a37dd8f1d5b2e54738a04", name : "fairy_jing/drum/drum.ogg"},{ bytes : 147001, md5 : "25d86e4a7b99c7ae3bf264bd92d08f78", name : "fairy_jing/hat/hat.mp3"},{ bytes : 77277, md5 : "6f2d51db24b8e5d83b6b5a7b5ebb7461", name : "fairy_jing/hat/hat.ogg"},{ bytes : 207162, md5 : "5387bc8092beb6142325599bea3a0ca8", name : "fairy_jing/piano_1/piano_1.mp3"},{ bytes : 177510, md5 : "c6deb0a4f2f551f498cf28b3086d0b40", name : "fairy_jing/piano_1/piano_1.ogg"},{ bytes : 262169, md5 : "cde91caa7d7b9c82ed489ffea0af48c5", name : "fairy_jing/piano_2/piano_2.mp3"},{ bytes : 264075, md5 : "d99a42d774f5d678903aec05c23c1dc5", name : "fairy_jing/piano_2/piano_2.ogg"},{ bytes : 348816, md5 : "b066fb7de96f7991a1bac48bb0306b57", name : "fairy_jing/wind/wind.mp3"},{ bytes : 310571, md5 : "92afd7f67efcfcf85d2ce9bcc8bb360a", name : "fairy_jing/wind/wind.ogg"},{ bytes : 1579, md5 : "25cc8f2327c14562829cbc92c477eb9f", name : "Hero.png"},{ bytes : 24837, md5 : "246642bfd91868fd675a411d59ec88ac", name : "REMOVE.fnt"},{ bytes : 95291, md5 : "3334e3db95fc8227481a3b877ade8c04", name : "REMOVE.png"}]}]}};
+flambe_asset_Manifest.__meta__ = { obj : { assets : [{ global : [{ bytes : 799, md5 : "b06744bc67ac2a07d5f39c6567d681a7", name : "Arial.bmfc"},{ bytes : 62781, md5 : "a846e319f4a9656b1e1c364e100d9878", name : "Arial.fnt"},{ bytes : 73484, md5 : "6cf73fdfb5cfab748e6be8ad116898ca", name : "Arial_0.png"},{ bytes : 1494, md5 : "ab2f454b7feeb887249027c8bfe74703", name : "box.png"},{ bytes : 50156, md5 : "ff09074903482600cb59b570b2f096a1", name : "CherryCreamSoda.ttf"},{ bytes : 2629713, md5 : "f7188d4d4900d9bac7a840f72d9702cd", name : "deep_leaves/deep_leaves.m4a"},{ bytes : 1707862, md5 : "bbfea731439f0ab6d0454953eeb52fda", name : "deep_leaves/deep_leaves.mp3"},{ bytes : 1613503, md5 : "b6dff50ed992f47546881c874e08bc03", name : "deep_leaves/deep_leaves.ogg"},{ bytes : 147037, md5 : "1b8b738b317a6cc6180a2b5301f2738a", name : "fairy_jing/drum/drum.mp3"},{ bytes : 165911, md5 : "f9e73272272a37dd8f1d5b2e54738a04", name : "fairy_jing/drum/drum.ogg"},{ bytes : 147001, md5 : "25d86e4a7b99c7ae3bf264bd92d08f78", name : "fairy_jing/hat/hat.mp3"},{ bytes : 77277, md5 : "6f2d51db24b8e5d83b6b5a7b5ebb7461", name : "fairy_jing/hat/hat.ogg"},{ bytes : 207162, md5 : "5387bc8092beb6142325599bea3a0ca8", name : "fairy_jing/piano_1/piano_1.mp3"},{ bytes : 177510, md5 : "c6deb0a4f2f551f498cf28b3086d0b40", name : "fairy_jing/piano_1/piano_1.ogg"},{ bytes : 262169, md5 : "cde91caa7d7b9c82ed489ffea0af48c5", name : "fairy_jing/piano_2/piano_2.mp3"},{ bytes : 264075, md5 : "d99a42d774f5d678903aec05c23c1dc5", name : "fairy_jing/piano_2/piano_2.ogg"},{ bytes : 348816, md5 : "b066fb7de96f7991a1bac48bb0306b57", name : "fairy_jing/wind/wind.mp3"},{ bytes : 310571, md5 : "92afd7f67efcfcf85d2ce9bcc8bb360a", name : "fairy_jing/wind/wind.ogg"},{ bytes : 1579, md5 : "25cc8f2327c14562829cbc92c477eb9f", name : "Hero.png"},{ bytes : 24837, md5 : "246642bfd91868fd675a411d59ec88ac", name : "REMOVE.fnt"},{ bytes : 95291, md5 : "3334e3db95fc8227481a3b877ade8c04", name : "REMOVE.png"}]}]}};
 flambe_asset_Manifest._supportsCrossOrigin = (function() {
 	var detected = (function() {
 		if(js_Browser.get_navigator().userAgent.indexOf("Linux; U; Android") >= 0) return false;
@@ -5890,7 +6132,9 @@ flambe_platform_html_HtmlUtil.VENDOR_PREFIXES = ["webkit","moz","ms","o","khtml"
 flambe_platform_html_HtmlUtil.SHOULD_HIDE_MOBILE_BROWSER = js_Browser.get_window().top == js_Browser.get_window() && new EReg("Mobile(/.*)? Safari","").match(js_Browser.get_navigator().userAgent);
 flambe_platform_html_WebAudioSound._detectSupport = true;
 flambe_platform_html_WebGLGraphics._scratchMatrix = new flambe_math_Matrix();
-hams_AudioManager.debug = true;
+hams_AudioManager.debug = false;
+hams_Scrollbar.MASTER_UP = flambe_input_Key.Up;
+hams_Scrollbar.MASTER_DOWN = flambe_input_Key.Down;
 hams_Main.main();
 })();
 
