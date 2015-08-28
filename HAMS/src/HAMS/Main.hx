@@ -16,6 +16,7 @@ import flambe.System.keyboard;
 import haxe.ds.StringMap;
 import flambe.input.Key;
 import flambe.subsystem.KeyboardSystem;
+
 class Main
 {
     // Main function for the game
@@ -84,16 +85,10 @@ class Main
         // Setting your song to crossfade between tracks
         _sm.Crossfade = true;
         _sm.SetCrossfadeThreshold(2.0); // Sets the time before fadeout in seconds
-
-		// How to Play a Vertically Remixed Song
-
-
-
-
+		
 		var _volume = 0.2;
 		_sm.Loop(_volume);
 
-        
         var ups = [Key.Q,Key.W,Key.E,Key.R,Key.T,Key.Y];
         var downs = [Key.A,Key.S,Key.D,Key.F,Key.G, Key.H];
 		var _index = 0;
@@ -139,3 +134,6 @@ class Main
         return player.get(Player);
     }
 }
+
+#typedef SM = SongManager;
+#typedef AM = AudioManager;
