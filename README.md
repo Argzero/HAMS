@@ -36,7 +36,7 @@ To use the Haxe Audio Management System, You must give credit to Argzero for use
 
 Additionally, Argzero does humbly request that you notify him of any improvements you have come up with for his HAMS so that he may continue to provide quality HAMS in the future both for your sake and his.
 
-Argzero is available to help you with your integration of this project upon request. Please send all requests to his email as stated in the above paragraph. Currently this is a free service available to any who request it. Be aware, however, that Argzero is also only human and has a job too. That said, you can probably expect a response within 2 days.
+Argzero is available to help you with your integration of this project upon request. Please send all requests to his email as stated in the above paragraph. Currently this is a free service available to any who request it. Be aware, however, that Argzero is also only human and has a job too. You acknowledge that Argzero may refuse such requests if they so wish. That said, you can probably expect a response within 2 days.
 
 The music belongs to Argzero under Creative Commons.
 The [spritesheet art](http://opengameart.org/content/base-character-spritesheet-16x16) belongs to a user on the open game art website under CC0 license but Argzero thought it kind to put a link here.
