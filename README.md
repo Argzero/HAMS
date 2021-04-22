@@ -40,5 +40,3 @@ Argzero is available to help you with your integration of this project upon requ
 
 The music belongs to Argzero under Creative Commons.
 The [spritesheet art](http://opengameart.org/content/base-character-spritesheet-16x16) belongs to a user on the open game art website under CC0 license but Argzero thought it kind to put a link here.
-
-PLEASE REFER TO THE GNU GENERAL PUBLIC LICENSE v2.0 AS INCLUDED IN THE ROOT FOLDER OF THE REPO FOR ALL TERMS NOT STATED ABOVE. DO NOTE, THAT ARGZERO'S STATEMENTS ABOVE, AS WELL AS ANY PIECE OF WRITING WHICH HE CHOOSES TO ADD TO THIS REPO THAT STATES OTHERWISE MAY OVERRIDE THE TERMS OF THE GNU AS THEY APPLY TO THIS PROGRAM.
